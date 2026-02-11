@@ -1,232 +1,567 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import TitleBar from "../component/TitleBar";
+import Footer from "../component/Footer";
 
 type Category = "Growth" | "Security" | "Engineering" | "People";
 
 interface Insight {
-  year: number;
-  month: string;
   title: string;
   description: string;
   category: Category;
 }
 
 const insightsData: Insight[] = [
-  { year: 2024, month: "December", title: "Company Founded", description: "Founded the company with a clear mission to build secure, scalable, and high-quality software solutions for modern businesses.", category: "Growth" },
-  { year: 2025, month: "January", title: "Core Engineering Foundations", description: "Defined core technology stack, coding standards, and architectural guidelines to ensure long-term maintainability.", category: "Engineering" },
-  { year: 2025, month: "March", title: "Security-First Development Practices", description: "Adopted secure coding standards, access control policies, and data protection measures across all projects.", category: "Security" },
-  { year: 2025, month: "June", title: "Initial Client Engagements", description: "Successfully delivered early client projects and established trust through transparent communication and reliability.", category: "Growth" },
-  { year: 2025, month: "September", title: "Engineering Team Expansion", description: "Expanded the engineering team to support multiple concurrent projects while maintaining quality standards.", category: "People" },
-  { year: 2025, month: "November", title: "Process Automation & DevOps", description: "Implemented CI/CD pipelines, automated testing, and streamlined deployment workflows to improve delivery speed.", category: "Engineering" },
-  { year: 2025, month: "December", title: "Strengthened Security & Compliance", description: "Enhanced security audits, monitoring, and compliance practices to support enterprise-grade systems.", category: "Security" },
-  { year: 2026, month: "January", title: "Client-Centric Delivery & Growth", description: "Refined delivery models based on client feedback, improving turnaround time, reliability, and long-term partnerships.", category: "Growth" },
+  {
+    title: "Company Founded",
+    description:
+      "Founded the company with a clear mission to build secure, scalable, and high-quality software solutions for modern businesses.",
+    category: "Growth",
+  },
+  {
+    title: "Core Engineering Foundations",
+    description:
+      "Defined core technology stack, coding standards, and architectural guidelines to ensure long-term maintainability.",
+    category: "Engineering",
+  },
+  {
+    title: "Security-First Development Practices",
+    description:
+      "Adopted secure coding standards, access control policies, and data protection measures across all projects.",
+    category: "Security",
+  },
+  {
+    title: "Initial Client Engagements",
+    description:
+      "Successfully delivered early client projects and established trust through transparent communication and reliability.",
+    category: "Growth",
+  },
+  {
+    title: "Engineering Team Expansion",
+    description:
+      "Expanded the engineering team to support multiple concurrent projects while maintaining quality standards.",
+    category: "People",
+  },
+  {
+    title: "Process Automation & DevOps",
+    description:
+      "Implemented CI/CD pipelines, automated testing, and streamlined deployment workflows to improve delivery speed.",
+    category: "Engineering",
+  },
+  {
+    title: "Strengthened Security & Compliance",
+    description:
+      "Enhanced security audits, monitoring, and compliance practices to support enterprise-grade systems.",
+    category: "Security",
+  },
+  {
+    title: "Client-Centric Delivery & Growth",
+    description:
+      "Refined delivery models based on client feedback, improving turnaround time, reliability, and long-term partnerships.",
+    category: "Growth",
+  },
 ];
 
 const categories: Category[] = ["Growth", "Security", "Engineering", "People"];
 
+const categoryColors: Record<Category, string> = {
+  Growth: "#4d96ff",
+  Security: "#ff6b6b",
+  Engineering: "#6bcb77",
+  People: "#845ec2",
+};
+
 const Insights: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<Category | "All">("All");
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setLoaded(true), 100);
+  }, []);
 
   const filteredInsights =
     activeFilter === "All"
       ? insightsData
       : insightsData.filter((i) => i.category === activeFilter);
 
-  const groupedByYear = filteredInsights.reduce<Record<number, Insight[]>>(
-    (acc, item) => {
-      acc[item.year] = acc[item.year] || [];
-      acc[item.year].push(item);
-      return acc;
-    },
-    {}
-  );
-
   return (
-    <div className="container py-5 position-relative insights-page">
-      {/* Background Shapes */}
-      <div className="bg-shapes">
-        <span className="shape shape-1"></span>
-        <span className="shape shape-2"></span>
-        <span className="shape shape-3"></span>
-      </div>
+    <>
+      <TitleBar />
+      
+      <div className="insights-page">
+        <div className="container-fluid px-3 px-sm-4 px-lg-5">
+          <h1 className="insights-main-title">Company Insights</h1>
+          <p className="insights-subtitle">
+            Our journey — growth, engineering, security, and people.
+          </p>
 
-      <h1 className="text-center fw-bold mb-3">Company Insights</h1>
-      <p className="text-center text-muted mb-5">
-        Our journey since inception — growth, engineering, security, and people.
-      </p>
+          {/* Filters */}
+          <div className="filter-bar">
+            <button
+              className={`filter-btn ${activeFilter === "All" ? "active" : ""}`}
+              onClick={() => setActiveFilter("All")}
+            >
+              All
+            </button>
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                className={`filter-btn ${activeFilter === cat ? "active" : ""}`}
+                onClick={() => setActiveFilter(cat)}
+                style={
+                  activeFilter === cat
+                    ? {
+                        backgroundColor: categoryColors[cat],
+                        borderColor: categoryColors[cat],
+                        color: "#fff",
+                      }
+                    : {}
+                }
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
 
-      {/* Filters */}
-      <div className="filter-bar mb-5">
-        <button
-          className={activeFilter === "All" ? "active" : ""}
-          onClick={() => setActiveFilter("All")}
-        >
-          All
-        </button>
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            className={activeFilter === cat ? "active" : ""}
-            onClick={() => setActiveFilter(cat)}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      {/* Timeline */}
-      <div className="timeline">
-        {Object.keys(groupedByYear)
-          .sort((a, b) => Number(b) - Number(a))
-          .map((year) => (
-            <div key={year} className="timeline-year">
-              <h3 className="year-label">{year}</h3>
-              {groupedByYear[Number(year)].map((item, index) => (
-                <div key={index} className="timeline-item">
-                  <span
-                    className={`category-dot ${item.category.toLowerCase()}`}
-                  ></span>
-                  <div className="timeline-card">
-                    <span className="timeline-date">
-                      {item.month} {item.year}
-                    </span>
-                    <h5>{item.title}</h5>
-                    <p>{item.description}</p>
-                    <span className={`category-tag ${item.category.toLowerCase()}`}>
-                      {item.category}
-                    </span>
+          {/* Timeline */}
+          <div className={`timeline-container ${loaded ? "show" : ""}`}>
+            <div className="timeline">
+              {filteredInsights.map((item, index) => (
+                <div
+                  key={index}
+                  className="timeline-item"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="timeline-marker">
+                    <span
+                      className="category-dot"
+                      style={{ backgroundColor: categoryColors[item.category] }}
+                    ></span>
+                  </div>
+                  <div className="timeline-content">
+                    <div
+                      className="timeline-card"
+                      style={{
+                        borderLeft: `4px solid ${categoryColors[item.category]}`,
+                      }}
+                    >
+                      <h5 className="card-title">{item.title}</h5>
+                      <p className="card-description">{item.description}</p>
+                      <span
+                        className="category-tag"
+                        style={{
+                          backgroundColor: `${categoryColors[item.category]}22`,
+                          color: categoryColors[item.category],
+                        }}
+                      >
+                        {item.category}
+                      </span>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
-          ))}
+          </div>
+        </div>
       </div>
+      
+      <Footer />
 
-      {/* Styles */}
       <style>{`
+        /* ======================= */
+        /* 🎯 MAIN SECTION */
+        /* ======================= */
         .insights-page {
-          overflow: hidden;
+          padding: 20px 0px 120px 0px;
+          background: #f5f5f5;
+          min-height: 100vh;
+          font-family: "Inter", "Segoe UI", system-ui, sans-serif;
         }
 
-        /* Background Shapes */
-        .bg-shapes {
-          position: absolute;
-          inset: 0;
-          z-index: 0;
-        }
-        .shape {
-          position: absolute;
-          border-radius: 50%;
-          filter: blur(100px);
-          opacity: 0.3;
-          animation: float 15s ease-in-out infinite alternate;
-        }
-        .shape-1 { width: 300px; height: 300px; background: #4d96ff; top: -80px; left: -100px; }
-        .shape-2 { width: 400px; height: 400px; background: #6bcb77; bottom: -120px; right: -120px; }
-        .shape-3 { width: 250px; height: 250px; background: #ffd93d; top: 40%; right: 20%; }
-
-        @keyframes float {
-          0% { transform: translateY(0px) translateX(0px);}
-          50% { transform: translateY(-20px) translateX(20px);}
-          100% { transform: translateY(0px) translateX(0px);}
+        /* ======================= */
+        /* 📌 TITLE */
+        /* ======================= */
+        .insights-main-title {
+          text-align: center;
+          font-weight: 800;
+          font-size: 36px;
+          margin-top: 0px;
+          margin-bottom: 15px;
+          background: linear-gradient(90deg, #1a1a1a, #292626f7, #1a1a1a);
+          background-size: 200%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: titleShine 4s linear infinite;
         }
 
-        /* Filters */
+        @keyframes titleShine {
+          0% { background-position: 0%; }
+          100% { background-position: 200%; }
+        }
+
+        .insights-subtitle {
+          text-align: center;
+          color: #6b7280;
+          margin-bottom: 40px;
+          font-size: 16px;
+        }
+
+        /* ======================= */
+        /* 🎨 FILTER BAR */
+        /* ======================= */
         .filter-bar {
           display: flex;
           justify-content: center;
-          gap: 0.5rem;
+          gap: 12px;
           flex-wrap: wrap;
+          margin-bottom: 50px;
           position: relative;
           z-index: 2;
         }
-        .filter-bar button {
-          border: 1px solid #ddd;
+
+        .filter-btn {
+          border: 2px solid #e5e7eb;
           background: #fff;
-          padding: 0.45rem 1rem;
-          border-radius: 20px;
+          padding: 10px 24px;
+          border-radius: 999px;
           cursor: pointer;
-          transition: 0.3s;
-        }
-        .filter-bar button.active {
-          background: #000;
-          color: #fff;
-          border-color: #000;
+          font-size: 15px;
+          font-weight: 600;
+          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
-        /* Timeline */
-        .timeline { position: relative; z-index: 2; max-width: 800px; margin: auto; }
+        .filter-btn:hover {
+          transform: translateY(-3px) scale(1.05);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .filter-btn.active {
+          background: #111827;
+          color: #fff;
+          border-color: #111827;
+          transform: scale(1.08);
+        }
+
+        /* ======================= */
+        /* 📍 TIMELINE CONTAINER */
+        /* ======================= */
+        .timeline-container {
+          position: relative;
+          max-width: 900px;
+          margin: auto;
+        }
+
+        .timeline {
+          position: relative;
+          padding-left: 40px;
+        }
+
         .timeline::before {
           content: "";
           position: absolute;
-          left: 16px;
+          left: 17px;
           top: 0;
           bottom: 0;
           width: 3px;
-          background: #e5e5e5;
+          background: linear-gradient(180deg, #e5e7eb 0%, #d1d5db 50%, #e5e7eb 100%);
           border-radius: 2px;
         }
 
-        .year-label { margin-left: 40px; margin-bottom: 1.5rem; font-weight: bold; font-size: 1.25rem; }
+        /* ======================= */
+        /* 🎯 TIMELINE ITEM */
+        /* ======================= */
+        .timeline-item {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 35px;
+          opacity: 0;
+          transform: translateX(-30px);
+          animation: slideInTimeline 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+          position: relative;
+        }
 
-        .timeline-item { display: flex; margin-bottom: 1.5rem; align-items: flex-start; }
+        @keyframes slideInTimeline {
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        /* ======================= */
+        /* 📍 TIMELINE MARKER */
+        /* ======================= */
+        .timeline-marker {
+          position: absolute;
+          left: -40px;
+          top: 15px;
+          z-index: 2;
+        }
 
         .category-dot {
-          width: 14px;
-          height: 14px;
+          width: 18px;
+          height: 18px;
           border-radius: 50%;
-          margin-left: 9px;
-          margin-right: 20px;
-          margin-top: 10px;
-          animation: pulse 2s infinite;
+          display: block;
+          box-shadow: 0 0 0 4px #f5f5f5, 0 0 0 6px currentColor;
+          animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
         @keyframes pulse {
-          0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.3); opacity: 0.7; }
+          0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1.3);
+            opacity: 0.8;
+          }
         }
 
-        .growth { background: #4d96ff; }
-        .security { background: #ff6b6b; }
-        .engineering { background: #6bcb77; }
-        .people { background: #845ec2; }
+        /* ======================= */
+        /* 📄 TIMELINE CONTENT */
+        /* ======================= */
+        .timeline-content {
+          flex: 1;
+        }
 
         .timeline-card {
-          background: #fff;
-          padding: 1rem 1.2rem;
-          border-radius: 12px;
-          box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+          background: #ffffff;
+          padding: 24px 28px;
+          border-radius: 18px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+          transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .timeline-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
           width: 100%;
-          transition: transform 0.3s, box-shadow 0.3s;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+          transition: left 0.7s ease;
         }
+
         .timeline-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+          transform: translateY(-8px) translateX(5px) scale(1.02);
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
 
-        .timeline-date { font-size: 0.8rem; color: #888; display: block; margin-bottom: 0.3rem; }
+        .timeline-card:hover::before {
+          left: 100%;
+        }
 
+        /* ======================= */
+        /* 📝 CARD CONTENT */
+        /* ======================= */
+        .card-title {
+          font-weight: 700;
+          font-size: 20px;
+          margin-bottom: 12px;
+          color: #111827;
+          transition: color 0.3s ease;
+        }
+
+        .timeline-card:hover .card-title {
+          color: #1f2937;
+        }
+
+        .card-description {
+          color: #000000;
+          font-size: 16px;
+          line-height: 1.7;
+          margin-bottom: 16px;
+        }
+
+        /* ======================= */
+        /* 🏷️ CATEGORY TAG */
+        /* ======================= */
         .category-tag {
-          font-size: 0.75rem;
-          padding: 0.25rem 0.6rem;
-          border-radius: 12px;
-          background: #f0f0f0;
-          margin-top: 0.5rem;
           display: inline-block;
+          font-size: 13px;
+          padding: 6px 16px;
+          border-radius: 999px;
+          font-weight: 600;
+          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          cursor: default;
         }
-        .category-tag.growth { background: #4d96ff33; color: #4d96ff; }
-        .category-tag.security { background: #ff6b6b33; color: #ff6b6b; }
-        .category-tag.engineering { background: #6bcb7733; color: #6bcb77; }
-        .category-tag.people { background: #845ec233; color: #845ec2; }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-          .timeline::before { left: 8px; }
-          .year-label { margin-left: 30px; }
-          .timeline-item { flex-direction: column; margin-left: 20px; }
-          .category-dot { margin-bottom: 8px; }
+        .category-tag:hover {
+          transform: scale(1.1) translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
+
+        /* ======================= */
+        /* 📱 MOBILE RESPONSIVE */
+        /* ======================= */
+        @media (max-width: 576px) {
+          .insights-page {
+            padding: 20px 0px 80px 0px;
+          }
+
+          .insights-main-title {
+            font-size: 26px;
+            margin-bottom: 10px;
+            padding: 0 15px;
+          }
+
+          .insights-subtitle {
+            font-size: 14px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+          }
+
+          .filter-bar {
+            gap: 8px;
+            margin-bottom: 35px;
+            padding: 0 15px;
+          }
+
+          .filter-btn {
+            padding: 8px 18px;
+            font-size: 14px;
+          }
+
+          .timeline-container {
+            padding: 0 10px;
+          }
+
+          .timeline {
+            padding-left: 30px;
+          }
+
+          .timeline::before {
+            left: 13px;
+          }
+
+          .timeline-marker {
+            left: -30px;
+          }
+
+          .category-dot {
+            width: 14px;
+            height: 14px;
+            box-shadow: 0 0 0 3px #f5f5f5, 0 0 0 5px currentColor;
+          }
+
+          .timeline-item {
+            margin-bottom: 25px;
+          }
+
+          .timeline-card {
+            padding: 18px 20px;
+            border-radius: 14px;
+          }
+
+          .card-title {
+            font-size: 17px;
+            margin-bottom: 10px;
+          }
+
+          .card-description {
+            font-size: 14px;
+            margin-bottom: 12px;
+          }
+
+          .category-tag {
+            font-size: 12px;
+            padding: 5px 14px;
+          }
+        }
+
+        /* ======================= */
+        /* 💻 TABLET RESPONSIVE */
+        /* ======================= */
+        @media (min-width: 577px) and (max-width: 991px) {
+          .insights-page {
+            padding: 20px 0px 100px 0px;
+          }
+
+          .insights-main-title {
+            font-size: 30px;
+            padding: 0 20px;
+          }
+
+          .insights-subtitle {
+            font-size: 15px;
+            padding: 0 20px;
+          }
+
+          .filter-bar {
+            margin-bottom: 40px;
+          }
+
+          .filter-btn {
+            padding: 9px 20px;
+          }
+
+          .timeline {
+            padding-left: 35px;
+          }
+
+          .timeline::before {
+            left: 15px;
+          }
+
+          .timeline-marker {
+            left: -35px;
+          }
+
+          .category-dot {
+            width: 16px;
+            height: 16px;
+          }
+
+          .timeline-card {
+            padding: 20px 24px;
+          }
+
+          .card-title {
+            font-size: 18px;
+          }
+        }
+
+        /* ======================= */
+        /* 🌐 LARGE SCREEN */
+        /* ======================= */
+        @media (min-width: 992px) and (max-width: 1399px) {
+          .insights-page {
+            padding: 20px 0px 110px 0px;
+          }
+
+          .insights-main-title {
+            font-size: 34px;
+            padding: 0 25px;
+          }
+        }
+
+        @media (min-width: 1400px) {
+          .insights-page {
+            padding: 20px 30px 120px 30px;
+          }
+
+          .insights-main-title {
+            font-size: 36px;
+          }
+        }
+
+        /* ======================= */
+        /* 🎬 STAGGERED ANIMATIONS */
+        /* ======================= */
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(7) { animation-delay: 0.7s; }
+        .timeline-item:nth-child(8) { animation-delay: 0.8s; }
       `}</style>
-    </div>
+    </>
   );
 };
 

@@ -1,195 +1,491 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, Clock, ArrowRight } from "lucide-react";
+import TitleBar from "../component/TitleBar";
+import Footer from "../component/Footer";
+import "./Contact.css";
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    subject: "",
+    message: ""
+  });
+
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const phoneNumber = "919150781685";
-    const message = `Hello, my name is ${formData.name}.\nEmail: ${formData.email}.\nMessage: ${formData.message}`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank", "noopener,noreferrer");
-    setFormData({ name: "", email: "", message: "" });
+
+    // 1. FORMAT MESSAGE FOR WHATSAPP
+    const whatsappMessage = `
+🔔 *NEW CONTACT FORM SUBMISSION*
+
+👤 *Name:* ${formData.name}
+📧 *Email:* ${formData.email}
+📱 *Phone:* ${formData.phone}
+🏢 *Company:* ${formData.company || 'Not provided'}
+📋 *Subject:* ${formData.subject}
+
+💬 *Message:*
+${formData.message}
+
+---
+_Sent from CodeThrive Website_
+    `.trim();
+
+    // 2. FORMAT MESSAGE FOR EMAIL
+    const emailBody = `
+NEW CONTACT FORM SUBMISSION
+
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Company: ${formData.company || 'Not provided'}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}
+
+---
+Sent from CodeThrive Contact Form
+    `.trim();
+
+    // 3. SEND TO WHATSAPP (Opens WhatsApp with pre-filled message)
+    const whatsappUrl = `https://wa.me/919150781685?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, '_blank');
+
+    // 4. SEND TO EMAIL (Opens email client with pre-filled email)
+    const mailtoLink = `mailto:codethriveinfotech@gmail.com?subject=${encodeURIComponent('Contact Form: ' + formData.subject)}&body=${encodeURIComponent(emailBody)}`;
+    window.open(mailtoLink, '_blank');
+
+    // 5. SHOW SUCCESS MESSAGE
+    setSubmitted(true);
+
+    // 6. RESET FORM AFTER 3 SECONDS
+    setTimeout(() => {
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        subject: "",
+        message: ""
+      });
+      setSubmitted(false);
+    }, 3000);
   };
 
   return (
-    <div className="contact-container">
-      {/* Background Circles */}
-      <div className="bg-circles">
-        <div className="circle" style={{ top: "15%", left: "10%" }} />
-        <div className="circle" style={{ top: "70%", left: "30%" }} />
-        <div className="circle" style={{ top: "40%", left: "80%" }} />
-      </div>
-
-      <div className="container py-5 position-relative">
-        <h1 className="text-center mb-5 fw-bold text-dark">Contact Us</h1>
-        <div className="row g-4">
-          {/* Contact Info */}
-          <div className="col-md-5">
-            <div className="info-card p-4 h-100">
-              <h4 className="mb-4 fw-bold">Get in Touch</h4>
-              <p><span className="icon">📧</span> <a href="mailto:codethriveinfotech@gmail.com">codethriveinfotech@gmail.com</a></p>
-              <p><span className="icon">📞</span> <a href="tel:+919150781685">+91 9150781685</a></p>
-              <p><span className="icon">💬</span> <a href="https://wa.me/919150781685" target="_blank" rel="noopener noreferrer">+91 9150781685</a></p>
-              <p><span className="icon">📍</span> 15/5, 1st Floor, Saravana Complex, Pappampatti Pirivu, Trichy Road, Coimbatore - 641402</p>
-            </div>
+    <>
+      <TitleBar />
+      
+      <div className="contact-page">
+        
+        {/* HERO SECTION */}
+        <section className="contact-hero">
+          <div className="contact-hero-content">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="hero-badge"
+            >
+              <motion.span 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                className="badge-icon"
+              >
+                💬
+              </motion.span>
+              <span className="badge-text">Get In Touch</span>
+            </motion.div>
+            
+            <motion.h1 
+              className="contact-hero-title"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="title-line"
+              >
+                LET'S BUILD
+              </motion.span>
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="title-line"
+              >
+                SOMETHING AMAZING
+              </motion.span>
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="title-line gradient-text"
+              >
+                TOGETHER
+              </motion.span>
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="contact-hero-description"
+            >
+              Ready to transform your business with cutting-edge technology? 
+              We're here to help bring your vision to life.
+            </motion.p>
           </div>
 
-          {/* Contact Form */}
-          <div className="col-md-7">
-            <div className="form-card p-4">
-              <form onSubmit={handleSubmit} className="row g-3">
-                <div className="col-12 form-group">
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder=" "
-                    required
-                  />
-                  <label>Name</label>
+          {/* Floating Shapes */}
+          <div className="floating-shapes">
+            {[...Array(5)].map((_, i) => (
+              <motion.div
+                key={i}
+                className={`shape shape-${i + 1}`}
+                animate={{
+                  x: [0, 30, 0, -30, 0],
+                  y: [0, -30, 20, -20, 0],
+                  rotate: [0, 90, 180, 270, 360]
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  delay: i * 2
+                }}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* CONTACT CONTENT */}
+        <section className="contact-content-section">
+          <div className="contact-content-container">
+            
+            {/* Contact Info Cards */}
+            <div className="contact-info-grid">
+              {/* Email Card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(94, 196, 232, 0.3)" }}
+                className="info-card email-card"
+              >
+                <motion.div 
+                  whileHover={{ scale: 1.1, rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                  className="info-card-icon"
+                >
+                  <Mail size={32} />
+                </motion.div>
+                <h3>Email</h3>
+                <a href="mailto:codethriveinfotech@gmail.com">codethriveinfotech@gmail.com</a>
+              </motion.div>
+
+              {/* Phone Card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
+                className="info-card phone-card"
+              >
+                <motion.div 
+                  whileHover={{ scale: 1.1, rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                  className="info-card-icon"
+                >
+                  <Phone size={32} />
+                </motion.div>
+                <h3>Phone</h3>
+                <a href="tel:+919150781685">+91 9150781685</a>
+              </motion.div>
+
+              {/* Location Card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(16, 185, 129, 0.3)" }}
+                className="info-card location-card"
+              >
+                <motion.div 
+                  whileHover={{ scale: 1.1, rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                  className="info-card-icon"
+                >
+                  <MapPin size={32} />
+                </motion.div>
+                <h3>Location</h3>
+                <p>15/5 , 1 st Floor , Saravana Complex ,Opp to K-Mart</p>
+                <p>Papampattipirivu, Trichy road , Coimbatore - 641103</p>
+              </motion.div>
+
+              {/* Working Hours Card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(236, 72, 153, 0.3)" }}
+                className="info-card hours-card"
+              >
+                <motion.div 
+                  whileHover={{ scale: 1.1, rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                  className="info-card-icon"
+                >
+                  <Clock size={32} />
+                </motion.div>
+                <h3>Working Hours</h3>
+                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                <p>Saturday: 10:00 AM - 4:00 PM</p>
+              </motion.div>
+            </div>
+
+            {/* Contact Form */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="contact-form-section"
+              id="contact-form"
+            >
+              <div className="contact-form-wrapper">
+                <h3 className="form-title">Send us a Message</h3>
+                <div style={{ 
+                  textAlign: 'center', 
+                  padding: '15px', 
+                  marginBottom: '20px',
+                  background: 'linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%)',
+                  borderRadius: '12px',
+                  border: '2px solid rgba(59, 130, 246, 0.2)'
+                }}>
+                  <p style={{ margin: '0', color: '#1e40af', fontWeight: '600', fontSize: '0.95rem' }}>
+                    📧 Email & 📱 WhatsApp will open with your message
+                  </p>
+                  <p style={{ margin: '5px 0 0 0', color: '#3b82f6', fontSize: '0.85rem' }}>
+                    Just click Send in both windows to complete!
+                  </p>
                 </div>
-                <div className="col-12 form-group">
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder=" "
-                    required
-                  />
-                  <label>Email</label>
-                </div>
-                <div className="col-12 form-group">
-                  <textarea
-                    name="message"
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder=" "
-                    required
-                  />
-                  <label>Message</label>
-                </div>
-                <div className="col-12 d-grid">
-                  <button
-                    type="submit"
-                    className="btn-whatsapp"
-                    disabled={!formData.name || !formData.email || !formData.message}
+                
+                <form className="contact-form" onSubmit={handleSubmit}>
+                  <div className="form-row">
+                    <motion.div 
+                      whileHover={{ scale: 1.02 }}
+                      className="form-group"
+                    >
+                      <label htmlFor="name">Name *</label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        placeholder="Your name"
+                      />
+                    </motion.div>
+
+                    <motion.div 
+                      whileHover={{ scale: 1.02 }}
+                      className="form-group"
+                    >
+                      <label htmlFor="email">Email *</label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        placeholder="your@email.com"
+                      />
+                    </motion.div>
+                  </div>
+
+                  <div className="form-row">
+                    <motion.div 
+                      whileHover={{ scale: 1.02 }}
+                      className="form-group"
+                    >
+                      <label htmlFor="phone">Phone</label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+91 1234567890"
+                      />
+                    </motion.div>
+
+                    <motion.div 
+                      whileHover={{ scale: 1.02 }}
+                      className="form-group"
+                    >
+                      <label htmlFor="company">Company</label>
+                      <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        placeholder="Your Company"
+                      />
+                    </motion.div>
+                  </div>
+
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    className="form-group"
                   >
-                    Send via WhatsApp
-                  </button>
-                </div>
-              </form>
-            </div>
+                    <label htmlFor="subject">Subject *</label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      placeholder="How can we help?"
+                    />
+                  </motion.div>
+
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    className="form-group"
+                  >
+                    <label htmlFor="message">Message *</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={5}
+                      placeholder="Tell us about your project..."
+                    />
+                  </motion.div>
+
+                  <motion.button 
+                    type="submit"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="submit-btn"
+                    disabled={submitted}
+                  >
+                    {submitted ? (
+                      <>
+                        <span className="btn-icon">✅</span>
+                        Message Sent!
+                      </>
+                    ) : (
+                      <>
+                        Send to Email & WhatsApp
+                        <motion.span
+                          animate={{ x: [0, 5, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        >
+                          <ArrowRight size={20} />
+                        </motion.span>
+                      </>
+                    )}
+                  </motion.button>
+
+                  {submitted && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="success-message"
+                    >
+                      <motion.span 
+                        animate={{ scale: [1, 1.3, 1] }}
+                        transition={{ duration: 0.6 }}
+                        className="success-icon"
+                      >
+                        🎉
+                      </motion.span>
+                      Email & WhatsApp opened! Please send both messages to complete.
+                    </motion.div>
+                  )}
+                </form>
+              </div>
+            </motion.div>
+
           </div>
-        </div>
+        </section>
+
+        {/* CTA SECTION */}
+        <section className="contact-cta">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="cta-content"
+          >
+            <motion.div 
+              animate={{ 
+                rotate: [0, 180, 0],
+                scale: [1, 1.2, 1]
+              }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="cta-icon"
+            >
+              🚀
+            </motion.div>
+            <h2 className="cta-title">Ready to Start Your Project?</h2>
+            <p className="cta-text">
+              Let's discuss how we can help you achieve your business goals with innovative technology solutions.
+            </p>
+            <div className="cta-buttons">
+              <motion.a 
+                href="#contact-form"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="cta-btn primary"
+              >
+                Get Started Now
+              </motion.a>
+              <motion.a 
+                href="tel:+919150781685"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="cta-btn secondary"
+              >
+                📞 Call Us Directly
+              </motion.a>
+            </div>
+          </motion.div>
+        </section>
+
       </div>
 
-      {/* Inline CSS */}
-      <style>{`
-        .contact-container {
-          position: relative;
-          min-height: 100vh;
-          background: linear-gradient(135deg, #fdfbfb, #ebedee);
-          overflow: hidden;
-        }
-
-        .bg-circles .circle {
-          position: absolute;
-          width: 120px;
-          height: 120px;
-          border-radius: 50%;
-          background: rgba(0, 123, 255, 0.2);
-          animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-25px); }
-        }
-
-        .info-card {
-          background: #ffffffcc;
-          backdrop-filter: blur(10px);
-          border-radius: 1rem;
-          box-shadow: 0 15px 25px rgba(0,0,0,0.1);
-          transition: transform 0.3s;
-        }
-        .info-card:hover { transform: translateY(-5px); }
-
-        .info-card p { font-size: 1.05rem; margin-bottom: 1rem; }
-        .info-card .icon { font-size: 1.2rem; margin-right: 0.5rem; }
-
-        .form-card {
-          background: #ffffffcc;
-          backdrop-filter: blur(10px);
-          border-radius: 1rem;
-          padding: 2rem;
-          box-shadow: 0 15px 25px rgba(0,0,0,0.1);
-          transition: transform 0.3s;
-        }
-        .form-card:hover { transform: translateY(-5px); }
-
-        .form-group { position: relative; }
-        .form-group input,
-        .form-group textarea {
-          width: 100%;
-          padding: 1rem 0.75rem;
-          border-radius: 0.75rem;
-          border: 1px solid #ccc;
-          background: transparent;
-          font-size: 1rem;
-          outline: none;
-        }
-
-        .form-group label {
-          position: absolute;
-          left: 1rem;
-          top: 1rem;
-          transition: 0.3s;
-          color: #555;
-          pointer-events: none;
-          background: transparent;
-          padding: 0 0.25rem;
-        }
-
-        .form-group input:focus + label,
-        .form-group input:not(:placeholder-shown) + label,
-        .form-group textarea:focus + label,
-        .form-group textarea:not(:placeholder-shown) + label {
-          top: -0.5rem;
-          left: 0.75rem;
-          font-size: 0.85rem;
-          color: #007bff;
-          background: #ffffffcc;
-        }
-
-        .btn-whatsapp {
-          background: #25D366;
-          color: #fff;
-          padding: 0.85rem 1.2rem;
-          font-size: 1.1rem;
-          border: none;
-          border-radius: 0.75rem;
-          font-weight: bold;
-          transition: 0.3s;
-        }
-        .btn-whatsapp:hover {
-          background: #1ebe57;
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        @media (max-width: 768px) {
-          .bg-circles .circle { display: none; }
-        }
-      `}</style>
-    </div>
+      <Footer />
+    </>
   );
 };
 

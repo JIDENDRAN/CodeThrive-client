@@ -5,6 +5,8 @@ import Industries from "./pages/Industries";
 import Projects from "./pages/Projects";
 import Insights from "./pages/Insights";
 import Contact from "./pages/Contact";
+import { BrowserRouter as Router } from 'react-router-dom';
+
 
 // Import your demo pages
 import BillingDemo from "./pages/demo/BillingDemo";
@@ -31,6 +33,17 @@ const App: React.FC = () => {
     { name: "Insights", path: "/insights" },
     { name: "Contact", path: "/contact" },
   ];
+  function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+        {/* Add other routes as needed */}
+      </Routes>
+    </Router>
+  );
+}
 
   return (
     <>

@@ -1,0 +1,380 @@
+/* ======================= */
+/* TITLE BAR - FIXED HEADER MATCHING IMAGE 2 */
+/* ======================= */
+.title-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 70px;
+  background: linear-gradient(135deg, #181c39 0%, #151b3c 50%, #171344 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  z-index: 1000;
+  box-sizing: border-box;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ======================= */
+/* LEFT SIDE: Logo + Company Name + Tagline */
+/* ======================= */
+.title-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  width: 50px;        
+  height: 50px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(77, 163, 255, 0.6));
+}
+
+.logo-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.2;
+}
+
+.company-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* "THRIVE" text in green-blue (cyan/teal) color */
+.thrive-text {
+  background: linear-gradient(135deg, #00ff88 0%, #00d9ff 50%, #00b8d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.4));
+}
+
+.company-tagline {
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+/* ======================= */
+/* RIGHT SIDE: Explore Button + Menu Icon */
+/* ======================= */
+.right-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Explore More Button - Bright Cyan - Clickable to open menu */
+.explore-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #00d9ff 0%, #00b8d4 100%);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 217, 255, 0.4);
+  border: none;
+  user-select: none;
+}
+
+.explore-text:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 217, 255, 0.6);
+  background: linear-gradient(135deg, #00e5ff 0%, #00c9e6 100%);
+}
+
+.explore-text:active {
+  transform: translateY(0);
+}
+
+/* Menu Icon (Hamburger) */
+.menu-icon {
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  margin-left: 5px;
+  transition: all 0.3s ease;
+  padding: 5px;
+  user-select: none;
+}
+
+.menu-icon:hover {
+  color: #00d9ff;
+  transform: scale(1.1);
+}
+
+/* ======================= */
+/* SIDE MENU - Slide-in Panel */
+/* ======================= */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 280px;
+  height: 100vh;
+  background: linear-gradient(135deg, #e3f2fd 0%, #fce4ec 50%, #e8f5e9 100%);
+  padding: 80px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2000;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 36px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 300;
+  line-height: 1;
+  user-select: none;
+}
+
+.close:hover {
+  color: #ff0000;
+  transform: rotate(90deg);
+}
+
+/* Menu Heading */
+.side-menu .menu-heading { 
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0d47a1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 3px solid #4da3ff;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  
+  /* Animated rainbow gradient */
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff9900,
+    #ffff00,
+    #00ff00,
+    #00ffff,
+    #0000ff,
+    #ff00ff,
+    #ff0000
+  );
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowShine 3s linear infinite;
+}
+
+@keyframes rainbowShine {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 400% center;
+  }
+}
+
+/* Menu Links */
+.side-menu a {
+  color: #1a237e;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.side-menu a:hover {
+  color: #4da3ff;
+  background: rgba(77, 163, 255, 0.1);
+  border-left: 4px solid #4da3ff;
+  padding-left: 20px;
+}
+
+/* ======================= */
+/* RESPONSIVE DESIGN */
+/* ======================= */
+
+/* Large Tablets */
+@media (max-width: 991px) {
+  .title-bar {
+    padding: 0 20px;
+    height: 65px;
+  }
+
+  .logo-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .company-name {
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+  }
+
+  .company-tagline {
+    font-size: 0.65rem;
+  }
+
+  .explore-text {
+    font-size: 0.9rem;
+    padding: 9px 18px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .title-bar {
+    padding: 0 15px;
+    height: 60px;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .title-logo {
+    gap: 12px;
+  }
+
+  .company-name {
+    font-size: 1rem;
+    letter-spacing: 0.8px;
+  }
+
+  .company-tagline {
+    font-size: 0.6rem;
+  }
+
+  .explore-text {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+
+  .menu-icon {
+    font-size: 28px;
+  }
+
+  .side-menu {
+    width: 260px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .title-bar {
+    padding: 0 12px;
+    height: 60px;
+  }
+
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .title-logo {
+    gap: 10px;
+  }
+
+  .company-name {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+
+  .company-tagline {
+    font-size: 0.55rem;
+  }
+
+  .explore-text {
+    font-size: 0.8rem;
+    padding: 7px 14px;
+  }
+
+  .right-actions {
+    gap: 10px;
+  }
+
+  .menu-icon {
+    font-size: 26px;
+    margin-left: 0;
+  }
+
+  .side-menu {
+    width: 240px;
+  }
+}
+
+/* Very Small Screens */
+@media (max-width: 400px) {
+  .title-bar {
+    padding: 0 10px;
+    height: 55px;
+  }
+
+  .logo-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .title-logo {
+    gap: 8px;
+  }
+
+  .company-name {
+    font-size: 0.8rem;
+    letter-spacing: 0.3px;
+  }
+
+  .company-tagline {
+    display: none; /* Hide on very small screens */
+  }
+
+  .explore-text {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
+  .right-actions {
+    gap: 8px;
+  }
+
+  .menu-icon {
+    font-size: 24px;
+  }
+}
