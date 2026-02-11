@@ -34,16 +34,16 @@ const App: React.FC = () => {
     { name: "Contact", path: "/contact" },
   ];
   function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-        {/* Add other routes as needed */}
-      </Routes>
-    </Router>
-  );
-}
+    return (
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          {/* Add other routes as needed */}
+        </Routes>
+      </Router>
+    );
+  }
 
   return (
     <>
@@ -114,11 +114,10 @@ const App: React.FC = () => {
 
           {/* Desktop & Mobile Nav Links */}
           <ul
-            className={`navbar-nav ms-auto gap-3 ${
-              menuOpen
+            className={`navbar-nav ms-auto gap-3 ${menuOpen
                 ? "d-flex flex-column align-items-end p-4"
                 : "d-none"
-            } d-lg-flex flex-lg-row align-items-lg-center`}
+              } d-lg-flex flex-lg-row align-items-lg-center`}
             style={{ listStyle: "none", margin: 0, padding: 0 }}
           >
             {navLinks.map((link) => (

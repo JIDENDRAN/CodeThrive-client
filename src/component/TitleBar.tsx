@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 import "./TitleBar.css";
 
 const TitleBar: React.FC = () => {
@@ -10,9 +11,9 @@ const TitleBar: React.FC = () => {
       {/* TOP TITLE BAR - Fixed Header */}
       <div className="title-bar">
         {/* LEFT SIDE: Logo + Company Info */}
-        <div className="title-logo">  
+        <div className="title-logo">
           <img
-            src="/src/assets/logo.png"
+            src={logo}
             alt="Codethrive Logo"
             className="logo-icon"
           />
