@@ -172,7 +172,7 @@ const Insights: React.FC = () => {
         /* ======================= */
         .insights-page {
           padding: 20px 0px 120px 0px;
-          background: #f5f5f5;
+          background: #ffffff;
           min-height: 100vh;
           font-family: "Inter", "Segoe UI", system-ui, sans-serif;
         }
@@ -329,7 +329,8 @@ const Insights: React.FC = () => {
           background: #ffffff;
           padding: 24px 28px;
           border-radius: 18px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+          border: 1px solid #e2e8f0;
           transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
           position: relative;
           overflow: hidden;

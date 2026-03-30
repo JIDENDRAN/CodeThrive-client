@@ -11,7 +11,7 @@
 /* ==================== */
 .contact-hero {
   min-height: 60vh;
-  background: linear-gradient(135deg, #0f0f4a 0%, #2a5a7a 50%, #3a7a9a 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -229,7 +229,7 @@
 /* ==================== */
 .contact-content-section {
   padding: 100px 40px;
-  background: linear-gradient(135deg, #f0f4f8 0%, #e6eef5 100%);
+  background: #f8fafc;
 }
 
 .contact-content-container {
@@ -262,7 +262,8 @@
   padding: 40px 30px;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
   border: 2px solid transparent;
 }
@@ -344,7 +345,8 @@
   border-radius: 30px;
   padding: 50px 45px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgba(94, 196, 232, 0.1);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
   transition: all 0.4s ease;
 }
 
