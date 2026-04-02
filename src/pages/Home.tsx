@@ -323,7 +323,7 @@ const Home: React.FC = () => {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.8 }}
                     src={VisionImage} 
-                    alt="Vision" 
+                    alt="CodeThrive Infotech Vision - Creating innovative digital solutions" 
                     className="card-image"
                   />
                 </motion.div>
@@ -370,7 +370,7 @@ const Home: React.FC = () => {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.8 }}
                     src={MissionImage} 
-                    alt="Mission" 
+                    alt="CodeThrive Infotech Mission - Solving real business problems with scalable IT solutions" 
                     className="card-image"
                   />
                 </motion.div>

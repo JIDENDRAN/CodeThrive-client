@@ -2,41 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Home Page -->
   <url>
-    <loc>https://code-thrive-client.vercel.app/</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://client.codethriveinfotech.in/</loc>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <!-- Industries Page -->
   <url>
-    <loc>https://code-thrive-client.vercel.app/industries</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://client.codethriveinfotech.in/industries</loc>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Projects Page -->
   <url>
-    <loc>https://code-thrive-client.vercel.app/projects</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://client.codethriveinfotech.in/projects</loc>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Insights Page -->
   <url>
-    <loc>https://code-thrive-client.vercel.app/insights</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://client.codethriveinfotech.in/insights</loc>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Contact Page -->
   <url>
-    <loc>https://code-thrive-client.vercel.app/contact</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://client.codethriveinfotech.in/contact</loc>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- Demo Pages -->
+  <url>
+    <loc>https://client.codethriveinfotech.in/demo/billing</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://client.codethriveinfotech.in/demo/college-erp</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://client.codethriveinfotech.in/demo/ecommerce</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://client.codethriveinfotech.in/demo/hospital</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://client.codethriveinfotech.in/demo/tickets</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
+
