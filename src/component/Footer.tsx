@@ -12,13 +12,13 @@ const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        
+
         {/* Decorative Divider */}
         <div className="footer-divider"></div>
 
         {/* Main Footer Content */}
         <div className="footer-content">
-          
+
           {/* Left: Brand Section */}
           <div className="footer-brand">
             <div className="footer-logo">
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <p className="footer-description">
-              Empowering businesses with smart, scalable, and secure digital solutions. 
+              Empowering businesses with smart, scalable, and secure digital solutions.
               Transform your vision into reality with CodeThrive Infotech.
             </p>
           </div>
@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
               <motion.a
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://codethriveinfo.vercel.app/"
+                href="https://client.codethriveinfotech.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-social-link footer-social-logo"
@@ -135,7 +135,7 @@ const Footer: React.FC = () => {
               </motion.a>
             </div>
           </div>
-          
+
         </div>
 
         {/* Bottom: Copyright */}
