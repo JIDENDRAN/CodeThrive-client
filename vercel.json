@@ -1,17 +1,7 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
-    {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap.xml"
-    },
-    {
-      "source": "/sitemap.txt",
-      "destination": "/sitemap.txt"
-    },
-    {
-      "source": "/robots.txt",
-      "destination": "/robots.txt"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"

@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://client.codethriveinfotech.in/sitemap_index.xml
+Sitemap: https://client.codethriveinfotech.in/sitemap_pages.xml
+Sitemap: https://client.codethriveinfotech.in/sitemap_images.xml
 Sitemap: https://client.codethriveinfotech.in/sitemap.xml
-
 Sitemap: https://client.codethriveinfotech.in/sitemap.txt

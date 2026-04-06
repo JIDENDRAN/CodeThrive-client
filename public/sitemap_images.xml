@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://client.codethriveinfotech.in/</loc>
+    <image:image>
+      <image:loc>https://client.codethriveinfotech.in/images/1.jpg</image:loc>
+      <image:title>CodeThrive Infotech - Software Solutions</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://client.codethriveinfotech.in/images/2.jpg</image:loc>
+      <image:title>Custom Software Development</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://client.codethriveinfotech.in/images/3.jpg</image:loc>
+      <image:title>Digital Transformation Services</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://client.codethriveinfotech.in/images/4.jpg</image:loc>
+      <image:title>Enterprise ERP Solutions</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://client.codethriveinfotech.in/images/5.jpg</image:loc>
+      <image:title>Healthcare IT Solutions</image:title>
+    </image:image>
+  </url>
+</urlset>
