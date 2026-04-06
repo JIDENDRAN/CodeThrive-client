@@ -8,11 +8,29 @@
         {
           "type": "header",
           "key": "Host",
-          "value": "code-thrive-client.vercel.app"
+          "value": "(.*)\\.vercel\\.app"
         }
       ],
       "destination": "https://client.codethriveinfotech.in/$1",
       "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "Host",
+          "value": "(.*)\\.vercel\\.app"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ],
   "rewrites": [
