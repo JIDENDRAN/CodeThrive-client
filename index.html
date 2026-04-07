@@ -33,10 +33,28 @@
   <meta property="twitter:image" content="https://client.codethriveinfotech.in/images/1.jpg" />
 
   <!-- Canonical Link -->
-  <link rel="canonical" href="https://client.codethriveinfotech.in/" />
+  <link rel="canonical" id="canonical-link" href="https://client.codethriveinfotech.in/" />
+
+  <script>
+    (function () {
+      const baseDomain = "https://client.codethriveinfotech.in";
+      const currentPath = window.location.pathname;
+      const fullUrl = baseDomain + (currentPath === '/' ? '' : currentPath);
+
+      // Update Canonical
+      document.getElementById('canonical-link').setAttribute('href', fullUrl);
+
+      // Update OG & Twitter URLs
+      const ogUrl = document.querySelector('meta[property="og:url"]');
+      if (ogUrl) ogUrl.setAttribute('content', fullUrl);
+
+      const twitterUrl = document.querySelector('meta[property="twitter:url"]');
+      if (twitterUrl) twitterUrl.setAttribute('content', fullUrl);
+    })();
+  </script>
 
   <!-- GOOGLE SEARCH CONSOLE VERIFICATION -->
-  <meta name="google-site-verification" content="ENTER_YOUR_GOOGLE_VERIFICATION_CODE_HERE" />
+  <meta name="google-site-verification" content="Vsod9kdO9UbWwiAp0-oxiT4OCbk60T59RgHu7Ri-_08" />
 
   <!-- Favicon / Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"

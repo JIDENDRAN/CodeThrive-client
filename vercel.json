@@ -8,7 +8,7 @@
         {
           "type": "header",
           "key": "Host",
-          "value": "(.*)\\.vercel\\.app"
+          "value": "code-thrive-client\\.vercel\\.app"
         }
       ],
       "destination": "https://client.codethriveinfotech.in/$1",
@@ -22,7 +22,7 @@
         {
           "type": "header",
           "key": "Host",
-          "value": "(.*)\\.vercel\\.app"
+          "value": "code-thrive-client\\.vercel\\.app"
         }
       ],
       "headers": [
