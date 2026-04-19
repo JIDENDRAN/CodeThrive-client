@@ -1,0 +1,544 @@
+/* FoodRestaurant.css */
+.food-rest-container {
+  font-family: 'Inter', sans-serif;
+  background-color: #fffaf0; /* Warm off-white */
+  color: #333;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Animations */
+@keyframes fadeUpIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(232, 76, 61, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(232, 76, 61, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(232, 76, 61, 0); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Navbar */
+.food-rest-nav {
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.food-rest-logo {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #e74c3c;
+  letter-spacing: 1px;
+}
+.food-rest-logo span {
+  color: #f39c12;
+}
+
+.food-rest-tabs {
+  display: flex;
+  gap: 30px;
+}
+
+.food-rest-tab {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  padding: 10px 5px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.food-rest-tab:hover, .food-rest-tab.active {
+  color: #e74c3c;
+}
+
+.food-rest-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #e74c3c;
+  border-radius: 3px;
+}
+
+.food-rest-btn-book {
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  animation: pulseGlow 2s infinite;
+  transition: transform 0.3s;
+}
+.food-rest-btn-book:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Tabs Content Container */
+.food-rest-content {
+  padding-top: 100px;
+  min-height: 80vh;
+}
+
+/* Home Tab */
+.food-rest-home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 5%;
+  gap: 50px;
+  animation: fadeUpIn 0.8s ease-out forwards;
+}
+
+.food-rest-home-left {
+  flex: 1;
+}
+
+.food-rest-home-title {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.food-rest-home-title span {
+  background: linear-gradient(135deg, #e74c3c, #f39c12);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.food-rest-home-desc {
+  font-size: 1.2rem;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  max-width: 500px;
+}
+
+.food-rest-home-btns {
+  display: flex;
+  gap: 20px;
+}
+
+.food-rest-btn-primary {
+  padding: 15px 35px;
+  background: #f39c12;
+  color: #fff;
+  border-radius: 50px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(243, 156, 18, 0.3);
+  transition: all 0.3s;
+}
+.food-rest-btn-primary:hover {
+  background: #e67e22;
+  transform: translateY(-3px);
+}
+
+.food-rest-btn-secondary {
+  padding: 15px 35px;
+  background: transparent;
+  color: #e74c3c;
+  border: 2px solid #e74c3c;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.food-rest-btn-secondary:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.food-rest-home-right {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.food-rest-dish-img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 50%;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  animation: spinSlowly 30s linear infinite;
+  display: block;
+}
+
+@keyframes spinSlowly {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Multiple Screens Gallery styling */
+.food-screens-gallery {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.food-screen-main {
+  position: relative;
+  z-index: 2;
+}
+
+.food-screen-floating-1, .food-screen-floating-2 {
+  position: absolute;
+  width: 250px;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+  border: 4px solid #1c1c1c;
+  z-index: 3;
+  animation: floatFood 5s ease-in-out infinite alternate;
+}
+
+.food-screen-floating-1 { top: 10%; left: -60px; animation-delay: 0s; }
+.food-screen-floating-2 { bottom: 10%; right: -60px; animation-delay: 1.5s; }
+
+@keyframes floatFood {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-15px); }
+}
+
+@media (max-width: 768px) {
+  .food-screen-floating-1, .food-screen-floating-2 { display: none; }
+}
+
+/* Menu Tab */
+.food-rest-menu {
+  padding: 40px 5%;
+  animation: fadeUpIn 0.8s ease-out forwards;
+}
+
+.food-rest-menu-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #2c3e50;
+  margin-bottom: 50px;
+}
+
+.food-rest-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.food-rest-menu-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.food-rest-menu-card:hover {
+  transform: translateY(-10px);
+  border-color: #f39c12;
+  box-shadow: 0 15px 40px rgba(243, 156, 18, 0.15);
+}
+
+.food-rest-menu-price {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #e74c3c;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.food-rest-menu-name {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 700;
+  padding-right: 60px;
+}
+
+.food-rest-menu-desc {
+  color: #7f8c8d;
+  line-height: 1.5;
+}
+
+/* About Tab */
+.food-rest-about {
+  padding: 40px 5%;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  animation: fadeUpIn 0.8s ease-out forwards;
+}
+.food-rest-about-img {
+flex: 1;
+width: 100%;
+border-radius: 20px;
+box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+.food-rest-about-content {
+flex: 1;
+}
+
+.food-rest-about-content h2 {
+font-size: 3rem;
+font-weight: 800;
+color: #2c3e50;
+margin-bottom: 20px;
+}
+.food-rest-about-content p {
+font-size: 1.1rem;
+color: #555;
+line-height: 1.8;
+margin-bottom: 15px;
+}
+
+/* Footer strictly matching requirements */
+.food-rest-footer {
+  background: #111;
+  padding: 60px 5% 40px;
+  color: #ccc;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.food-rest-footer-top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.food-rest-footer-h4 {
+  color: #f39c12;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.food-rest-copyright {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Gallery Tab */
+.food-rest-gallery {
+  padding: 40px 5%;
+  animation: fadeUpIn 0.8s ease-out forwards;
+}
+
+.food-rest-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.food-rest-gallery-item {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 300px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.food-rest-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.food-rest-gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.food-rest-gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* Chefs Tab */
+.food-rest-chefs {
+  padding: 40px 5%;
+  animation: fadeUpIn 0.8s ease-out forwards;
+}
+
+.food-rest-chefs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  text-align: center;
+}
+
+.food-rest-chef-card {
+  background: #fff;
+  padding: 40px 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+
+.food-rest-chef-card:hover {
+  transform: translateY(-10px);
+}
+
+.chef-avatar {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #f39c12, #e74c3c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.food-rest-chef-card h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.food-rest-chef-card p {
+  color: #e74c3c;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.food-rest-chef-card span {
+  color: #7f8c8d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  display: block;
+}
+
+/* Reviews Tab */
+.food-rest-reviews {
+  padding: 40px 5%;
+  animation: fadeUpIn 0.8s ease-out forwards;
+}
+
+.food-rest-reviews-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.food-rest-review-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-left: 5px solid #f39c12;
+  transition: all 0.3s;
+}
+
+.food-rest-review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.review-stars {
+  color: #f39c12;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  color: #555;
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.review-author {
+  color: #2c3e50;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 991px) {
+  .food-rest-home, .food-rest-about {
+    flex-direction: column;
+    text-align: center;
+  }
+  .food-rest-home-btns {
+    justify-content: center;
+  }
+  .food-rest-home-desc {
+    margin: 0 auto 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .food-rest-tabs {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+    justify-content: space-around;
+    z-index: 100;
+    gap: 0;
+  }
+  .food-rest-btn-book {
+    display: none;
+  }
+  .food-rest-content {
+    padding-bottom: 80px; /* Space for bottom nav on mobile */
+  }
+}

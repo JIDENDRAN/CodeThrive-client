@@ -1,0 +1,15 @@
+
+
+@media (max-width: 1025px) {
+
+  .vision-section, .mission-section { padding: 70px 25px; }
+  .content-card { padding: 3rem 2.5rem; }
+  .rating-section { padding: 70px 25px; }
+  .rating-wrapper { gap: 50px; text-align: center; }
+  .rating-badge { width: 300px; height: 300px; margin: 0 auto; }
+  .rating-content { align-items: center; }
+  .stat-item { align-items: center; text-align: center; }
+  .feedback-section { padding: 60px 20px 50px; }
+  .carousel-nav-btn { width: 42px; height: 42px; margin: 0 8px; }
+  .promo-section { padding: 50px 25px; }
+}

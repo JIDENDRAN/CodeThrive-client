@@ -1,0 +1,68 @@
+
+
+@media (max-width: 500px) {
+  .pro-stats-row { flex-direction: column; gap: 20px; }
+  .pro-section { padding: 60px 15px; }
+  .pro-heading { font-size: 2rem; line-height: 1.2; margin-bottom: 20px; }
+  
+  .pro-rating-stats-grid { grid-template-columns: 1fr; gap: 20px; }
+  .pro-rating-badge { padding: 40px 20px; }
+  .pro-rating-score { font-size: 4rem; }
+
+  .mission-vision-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 30px;
+  }
+  
+  .mv-card { padding: 30px 20px; }
+  .mv-icon-wrapper { width: 80px; height: 80px; margin-bottom: 20px !important; }
+  .mv-large-image { max-width: 180px; }
+  .mv-card h3 { font-size: 1.5rem; margin-bottom: 15px !important; }
+  .mv-card p { font-size: 0.95rem; line-height: 1.6; text-align: justify !important; text-align-last: center !important;}
+  .pro-faq-q { padding: 20px; font-size: 1rem; }
+  .pro-faq-a { padding: 0 20px 20px; font-size: 0.95rem; }
+  
+  .pro-cta-btn { padding: 12px 24px; font-size: 1rem; }
+  .cta-pro-card { padding: 30px 20px !important; }
+  
+  .popup-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 15px !important;
+  }
+  .popup-card {
+    min-height: 120px !important;
+  }
+  .popup-card h4 {
+    font-size: 1rem !important;
+    line-height: 1.2;
+  }
+  .popup-card-desc {
+    display: block !important;
+  }
+  
+  .projects-controls-wrapper {
+    justify-content: center !important;
+  }
+  
+  .pro-features-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 15px !important;
+  }
+  
+  .pro-testimonials-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+
+  .pro-feature-card {
+    padding: 20px 15px !important;
+  }
+  .pro-feature-card h3 {
+    font-size: 1.2rem !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .tcs-hero {
+    padding-top: 0px !important;
+  }
+}

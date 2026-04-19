@@ -1,0 +1,34 @@
+/* ==================== */
+/* RESPONSIVE: TABLET (768px - 1024px) */
+/* ==================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .contact-hero {
+    padding: 60px 40px;
+    min-height: 40vh;
+  }
+  
+  .contact-hero-title {
+    font-size: 2.8rem;
+  }
+
+  .contact-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-content-section {
+    padding: 60px 30px;
+  }
+
+  .contact-form-wrapper {
+    padding: 40px 30px;
+  }
+
+  .contact-cta {
+    padding: 60px 40px;
+  }
+}

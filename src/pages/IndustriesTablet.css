@@ -1,0 +1,35 @@
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .industry-section {
+    padding: 20px 0px 30px 0px;
+  }
+
+  .industry-main-title {
+    font-size: 30px;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    padding: 0 20px;
+  }
+
+  .industry-card {
+    min-height: 145px;
+    margin: 20px 0px 35px 0px;
+  }
+
+  .industry-footer {
+    padding: 9px 13px;
+  }
+
+  .shine-text {
+    font-size: 15px;
+  }
+
+  .arrow-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .modal-content {
+    padding: 2rem;
+  }
+}

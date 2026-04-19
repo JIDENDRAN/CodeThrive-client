@@ -1,0 +1,155 @@
+
+@media (max-width: 767px) {
+  .footer {
+    padding: 40px 20px 20px;
+  }
+
+  .footer-divider {
+    margin-bottom: 30px;
+  }
+
+  .footer-content {
+    gap: 35px;
+  }
+
+  .footer-logo-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .footer-company-name {
+    font-size: 1.3rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+  }
+
+  .footer-links-title,
+  .footer-contact-title {
+    font-size: 1.1rem;
+  }
+
+  .footer-link,
+  .footer-contact-item {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 575px) {
+  .footer {
+    padding: 35px 15px 20px;
+  }
+
+  .footer-content {
+    gap: 30px;
+  }
+
+  .footer-logo {
+    gap: 10px;
+  }
+
+  .footer-logo-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .footer-company-name {
+    font-size: 1.2rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.8rem;
+  }
+
+  .footer-description {
+    font-size: 0.85rem;
+  }
+
+  .footer-links-title,
+  .footer-contact-title {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+
+  .footer-link {
+    font-size: 0.85rem;
+  }
+
+  .footer-contact-item {
+    font-size: 0.85rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.85rem;
+  }
+
+  .footer-motto {
+    font-size: 0.8rem;
+  }
+
+  .footer-social-link {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .footer-social-link svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+@media (max-width: 400px) {
+  .footer {
+    padding: 30px 12px 18px;
+  }
+
+  .footer-logo-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .footer-company-name {
+    font-size: 1.1rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.75rem;
+  }
+
+  .footer-description {
+    font-size: 0.8rem;
+  }
+
+  .footer-links-title,
+  .footer-contact-title {
+    font-size: 1rem;
+  }
+
+  .footer-link,
+  .footer-contact-item {
+    font-size: 0.8rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+  }
+
+  .footer-motto {
+    font-size: 0.75rem;
+  }
+
+  .footer-social {
+    gap: 12px;
+  }
+
+  .footer-social-link {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+
+  .footer-social-link svg {
+    width: 17px;
+    height: 17px;
+  }
+}

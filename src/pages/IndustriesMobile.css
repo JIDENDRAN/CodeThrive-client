@@ -1,0 +1,79 @@
+
+@media (max-width: 576px) {
+  .industry-section {
+    padding: 20px 0px 20px 0px;
+  }
+
+  .industry-main-title {
+    font-size: 26px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    padding: 0 15px;
+  }
+
+  .industry-card {
+    min-height: 140px;
+    margin: 15px 0px 25px 0px;
+  }
+
+  .industry-footer {
+    padding: 8px 12px;
+  }
+
+  .shine-text {
+    font-size: 14px;
+  }
+
+  .arrow-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+  }
+
+  /* Touch animation instead of hover */
+  .industry-card:active {
+    transform: scale(0.95);
+  }
+
+  .industry-card:active img {
+    transform: scale(1.1);
+  }
+
+  .industry-card:active .arrow-btn {
+    transform: rotate(45deg) scale(1.15);
+  }
+
+  /* Modal adjustments */
+  .modal-content {
+    padding: 1.5rem;
+    max-height: 90vh;
+  }
+
+  .modal-header h3 {
+    font-size: 20px;
+  }
+
+  .modal-icon-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .modal-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .modal-subtitle {
+    font-size: 16px;
+  }
+
+  .industry-tag {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .challenges-list li {
+    font-size: 14px;
+    padding-left: 25px;
+  }
+}

@@ -1,0 +1,38 @@
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .projects-container {
+    padding: 20px 0px 100px 0px;
+  }
+
+  .projects-title {
+    font-size: 38px;
+    margin-bottom: 35px;
+    padding: 0 20px;
+  }
+
+  .projects-categories {
+    gap: 12px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+  }
+
+  .category-btn {
+    padding: 11px 25px;
+    font-size: 14px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 0 20px;
+  }
+
+  .project-card {
+    padding: 25px;
+    min-height: 300px;
+  }
+
+  .card-header h3 {
+    font-size: 20px;
+  }
+}

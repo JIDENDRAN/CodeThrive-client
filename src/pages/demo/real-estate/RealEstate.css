@@ -1,0 +1,109 @@
+/* RealEstate.css */
+.re-container {
+  font-family: 'Inter', sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
+}
+
+.re-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 5%;
+  background: #fff;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.re-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+.re-logo span { color: #3b82f6; }
+
+.re-tabs {
+  display: flex;
+  gap: 20px;
+}
+.re-tab {
+  background: none; border: none; font-weight: 600; cursor: pointer; color: #64748b; transition: 0.3s;
+}
+.re-tab.active, .re-tab:hover { color: #3b82f6; }
+
+.re-btn-primary {
+  background: #3b82f6; color: #fff; padding: 10px 20px; border-radius: 8px; border: none; font-weight: 700;
+}
+
+.re-content { padding: 40px 5%; }
+
+.re-home-text { text-align: center; margin-bottom: 50px; }
+.re-home-text h1 { font-size: 3rem; margin-bottom: 20px; font-weight: 900; }
+.re-home-text span { color: #3b82f6; }
+.re-home-text p { font-size: 1.2rem; color: #475569; max-width: 800px; margin: 0 auto; }
+
+/* Screens Gallery - as requested */
+.re-screens-gallery {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  min-height: 500px;
+}
+
+.screen-main img {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+  border: 4px solid #fff;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s;
+}
+
+.screen-main img:hover {
+  transform: scale(1.02);
+}
+
+.screen-floating-1, .screen-floating-2 {
+  position: absolute;
+  width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  border: 4px solid #fff;
+  z-index: 3;
+  animation: floatScreens 6s ease-in-out infinite alternate;
+}
+
+.screen-floating-1 {
+  bottom: -40px;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.screen-floating-2 {
+  top: -40px;
+  right: 10%;
+  animation-delay: 1s;
+}
+
+@keyframes floatScreens {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-20px); }
+}
+
+.re-section-title { font-size: 2rem; margin-bottom: 30px; text-align: center; font-weight: 800; }
+
+.re-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.re-card { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+.re-img-placeholder { background: #e2e8f0; height: 180px; border-radius: 8px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; color: #64748b; font-weight: 600; }
+
+.re-dash-flex { display: flex; gap: 30px; justify-content: center; }
+.re-dash-stat { background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; min-width: 200px; }
+.re-dash-stat h4 { font-size: 2.5rem; color: #3b82f6; margin: 0 0 10px 0; }
+
+.re-footer { text-align: center; padding: 40px; background: #0f172a; color: #94a3b8; margin-top: 50px; }

@@ -1,0 +1,88 @@
+
+@media (max-width: 768px) {
+  .title-bar {
+    padding: 0 10px;
+    height: 60px;
+  }
+  .title-logo {
+    gap: 6px;
+  }
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .logo-text-group {
+    gap: 0px;
+  }
+  .company-name {
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  .company-tagline {
+    font-size: 0.5rem;
+    white-space: nowrap;
+  }
+  .right-actions {
+    gap: 10px;
+  }
+  .explore-text {
+    font-size: 0.7rem;
+    padding: 6px 12px;
+    white-space: nowrap;
+  }
+  .menu-icon {
+    font-size: 26px;
+    margin-left: 0;
+  }
+  .side-menu {
+    width: 220px;
+    right: -220px;
+    padding: 70px 25px 25px;
+  }
+  .side-menu.open {
+    right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-bar {
+    padding: 0 5px;
+  }
+  .title-logo {
+    gap: 4px;
+  }
+  .logo-icon {
+    width: 25px;
+    height: 25px;
+  }
+  .company-name {
+    font-size: 0.75rem;
+  }
+  .company-tagline {
+    font-size: 0.45rem;
+  }
+  .right-actions {
+    gap: 5px;
+  }
+  .explore-text {
+    font-size: 0.6rem;
+    padding: 5px 8px;
+  }
+  .menu-icon {
+    font-size: 22px;
+  }
+  .side-menu {
+    width: 180px;
+    right: -180px;
+    padding: 60px 15px 15px;
+  }
+  .side-menu a {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+  }
+  .side-menu .menu-heading {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+}

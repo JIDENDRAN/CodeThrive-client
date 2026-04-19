@@ -1,0 +1,42 @@
+
+@media (max-width: 991px) {
+  .footer {
+    padding: 50px 30px 25px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .footer-brand,
+  .footer-links,
+  .footer-contact {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer-links,
+  .footer-contact {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-link {
+    padding-left: 0;
+  }
+  .footer-link:hover {
+    padding-left: 0;
+    transform: scale(1.05); /* replace lateral movement since centered */
+  }
+
+  .footer-description {
+    max-width: 100%;
+    text-align: center; /* center the brand section desc as well usually flows better */
+  }
+  
+  .footer-brand {
+    align-items: center;
+    text-align: center;
+  }
+}
