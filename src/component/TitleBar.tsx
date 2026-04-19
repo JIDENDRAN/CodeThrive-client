@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./TitleBar.css";
 import "./TitleBarMobile.css";
+import Logo from "../assets/logo.png";
 
 const TitleBar: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -13,7 +14,7 @@ const TitleBar: React.FC = () => {
         {/* LEFT SIDE: Logo + Company Info */}
         <div className="title-logo">  
           <img
-            src="/src/assets/logo.png"
+            src={Logo}
             alt="Codethrive Logo"
             className="logo-icon"
           />
