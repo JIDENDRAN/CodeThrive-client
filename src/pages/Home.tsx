@@ -16,7 +16,7 @@ import EcommerceBg from "../assets/ecommerce_bg.png";
 import EdtechBg from "../assets/edtech_bg.png";
 import ManufacturingBg from "../assets/manufacturing_bg.png";
 import LogisticsBg from "../assets/logistics_bg.png";
-import "./Home.css";
+import "./home.css";
 import "./homeTablet.css";
 import "./homeMobile.css";
 import "./HomePro.css";

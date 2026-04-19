@@ -440,7 +440,7 @@ Sent from CodeThrive Contact Form
 
                   <motion.button
                     type="submit"
-                    whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="submit-btn"
                     disabled={submitted}
@@ -512,7 +512,7 @@ Sent from CodeThrive Contact Form
             <div className="cta-buttons">
               <motion.a
                 href="#contact-form"
-                whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="cta-btn primary"
               >
@@ -520,7 +520,7 @@ Sent from CodeThrive Contact Form
               </motion.a>
               <motion.a
                 href="tel:+919150781685"
-                whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="cta-btn secondary"
               >
