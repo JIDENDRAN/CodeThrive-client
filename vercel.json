@@ -1,5 +1,22 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.codethriveinfotech.in"
+        }
+      ],
+      "destination": "https://codethriveinfotech.in/$1",
+      "permanent": true
+    }
+  ],
+
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
