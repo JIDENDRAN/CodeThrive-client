@@ -19,34 +19,6 @@ interface Project {
 
 const demoProjects: Project[] = [
   {
-    id: 12,
-    title: 'Madurai Tour Taxi',
-    description: 'A premium cab service and tour booking platform offering optimized travel packages and reliable rides.',
-    features: [
-      'Customized Tour Packages',
-      'Real-time Cab Booking',
-      'Local & Outstation Travel',
-      'Professional Driver Network',
-      '24/7 Customer Support',
-    ],
-    category: 'Web',
-    demoPath: 'https://maduraitourtaxi.com/'
-  },
-  {
-    id: 13,
-    title: 'Samyuktha Tours & Travels',
-    description: 'A comprehensive travel agency management portal facilitating safe, comfortable passenger tours.',
-    features: [
-      'South India Tour Packages',
-      'Dynamic Fleet Management',
-      'Instant Quote Booking',
-      'Travel Route Planner',
-      'Secure Billing Ledger',
-    ],
-    category: 'Web',
-    demoPath: 'https://share.google/h0d9jPKk4eO343XJa'
-  },
-  {
     id: 14,
     title: 'Restaurant Website',
     description: 'A premium, highly interactive dining website template designed for modern fine dining and restaurant venues.',

@@ -12,7 +12,7 @@ const TitleBar: React.FC = () => {
       {/* TOP TITLE BAR - Fixed Header */}
       <div className="title-bar">
         {/* LEFT SIDE: Logo + Company Info */}
-        <div className="title-logo">  
+        <Link to="/" className="title-logo">  
           <img
             src={Logo}
             alt="Codethrive Logo"
@@ -24,7 +24,7 @@ const TitleBar: React.FC = () => {
             </span>
             <span className="company-tagline">Progress. Cultivate. Innovate.</span>
           </div>
-        </div>
+        </Link>
 
         {/* RIGHT SIDE: Explore Button + Menu Icon */}
         <div className="right-actions">

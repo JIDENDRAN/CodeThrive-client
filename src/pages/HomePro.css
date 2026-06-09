@@ -930,3 +930,60 @@ details[open] .pro-faq-plus {
   }
 }
 
+/* ========================================== */
+/* CLIENTS MARQUEE TICKER                     */
+/* ========================================== */
+.clients-marquee-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 40px 0;
+  mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+}
+
+.clients-marquee-content {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  animation: marquee-scroll 25s linear infinite;
+  will-change: transform;
+}
+
+.clients-marquee-container:hover .clients-marquee-content {
+  animation-play-state: paused;
+}
+
+.marquee-card {
+  width: 380px;
+  flex-shrink: 0;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-1260px); /* 3 cards * (380px + 40px gap) */
+  }
+}
+
+/* Mobile responsive for marquee */
+@media (max-width: 768px) {
+  .marquee-card {
+    width: 300px;
+  }
+  .clients-marquee-content {
+    gap: 20px;
+    animation: marquee-scroll-mobile 20s linear infinite;
+  }
+  @keyframes marquee-scroll-mobile {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-960px); /* 3 cards * (300px + 20px gap) */
+    }
+  }
+}
+

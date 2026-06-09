@@ -692,57 +692,48 @@ const Home: React.FC = () => {
               <p className="pro-desc">We build long-term relationships with businesses to drive digital transformation and growth.</p>
             </motion.div>
 
-            <motion.div 
-              className="duo-showcase-container"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.25 }
-                }
-              }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              {clients.map((client, i) => (
-                <motion.div
-                  key={i}
-                  className="duo-card"
-                  style={{
-                    '--client-glow-color': client.glow,
-                    '--client-border-color': client.border,
-                    '--client-text-color': client.text,
-                    '--client-bg-color': client.bg
-                  } as React.CSSProperties}
-                  variants={{
-                    hidden: { opacity: 0, y: 50 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-                  }}
-                >
-                  <div className="duo-card-glow" />
-                  <div className="duo-logo-box">
-                    {client.logo ? (
-                      <img 
-                        src={client.logo} 
-                        alt={client.name} 
-                        className="duo-logo-img"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                          const fallback = e.currentTarget.parentElement?.querySelector('.client-fallback-avatar') as HTMLElement;
-                          if (fallback) fallback.style.display = 'block';
-                        }}
-                      />
-                    ) : null}
-                    <span className="client-fallback-avatar" style={{ display: client.logo ? 'none' : 'block', fontSize: '2.5rem' }}>
-                      {client.icon}
-                    </span>
+            <div className="clients-marquee-container">
+              <div className="clients-marquee-content">
+                {[...clients, ...clients, ...clients].map((client, i) => (
+                  <div
+                    key={i}
+                    className="duo-card marquee-card"
+                    style={{
+                      '--client-glow-color': client.glow,
+                      '--client-border-color': client.border,
+                      '--client-text-color': client.text,
+                      '--client-bg-color': client.bg
+                    } as React.CSSProperties}
+                    onClick={() => {
+                      if (client.url && client.url !== "#") {
+                        window.open(client.url, "_blank");
+                      }
+                    }}
+                  >
+                    <div className="duo-card-glow" />
+                    <div className="duo-logo-box">
+                      {client.logo ? (
+                        <img 
+                          src={client.logo} 
+                          alt={client.name} 
+                          className="duo-logo-img"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            const fallback = e.currentTarget.parentElement?.querySelector('.client-fallback-avatar') as HTMLElement;
+                            if (fallback) fallback.style.display = 'block';
+                          }}
+                        />
+                      ) : null}
+                      <span className="client-fallback-avatar" style={{ display: client.logo ? 'none' : 'block', fontSize: '2.5rem' }}>
+                        {client.icon}
+                      </span>
+                    </div>
+                    <span className="duo-tag">{client.tag}</span>
+                    <h3 className="duo-name">{client.name}</h3>
                   </div>
-                  <span className="duo-tag">{client.tag}</span>
-                  <h3 className="duo-name">{client.name}</h3>
-                </motion.div>
-              ))}
-            </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 

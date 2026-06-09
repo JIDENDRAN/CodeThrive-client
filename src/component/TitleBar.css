@@ -26,6 +26,7 @@
   align-items: center;
   gap: 15px;
   flex-shrink: 0;
+  text-decoration: none;
 }
 
 .logo-icon {
