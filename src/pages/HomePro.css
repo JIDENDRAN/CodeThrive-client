@@ -191,6 +191,14 @@
   justify-content: center;
   font-weight: 700;
   font-size: 1.1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .pro-reviewer-info h4 {
@@ -777,6 +785,148 @@ details[open] .pro-faq-plus {
     filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
   }
 }
+/* ========================================== */
+/* OUR CLIENTS SECTION                       */
+/* ========================================== */
+/* Ticker/Marquee container */
+/* Duo Showcase layout for exactly 2 clients */
+.duo-showcase-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1280px;
+  margin: 40px auto 0;
+  perspective: 1000px;
+  flex-wrap: wrap;
+}
 
- 
+.duo-card {
+  flex: 1;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+}
+
+/* Background mesh glow */
+.duo-card-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--client-glow-color, rgba(59, 130, 246, 0.1)) 0%, transparent 60%);
+  opacity: 0.5;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.duo-card:hover .duo-card-glow {
+  opacity: 0.9;
+}
+
+.duo-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  border-color: var(--client-border-color, #e2e8f0);
+  box-shadow: 0 20px 40px var(--client-glow-color, rgba(0, 0, 0, 0.08));
+}
+
+/* Logo box container */
+.duo-logo-box {
+  width: 100%;
+  height: 120px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  z-index: 2;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+  position: relative;
+  transition: all 0.5s ease;
+  overflow: hidden;
+  padding: 15px;
+}
+
+.duo-card:hover .duo-logo-box {
+  border-color: var(--client-border-color, #3b82f6);
+  box-shadow: 0 12px 30px var(--client-glow-color, rgba(0, 0, 0, 0.08));
+}
+
+.duo-logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.duo-card:hover .duo-logo-img {
+  transform: scale(1.06);
+}
+
+/* Label tag */
+.duo-tag {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--client-text-color, #3b82f6);
+  background: var(--client-bg-color, rgba(59, 130, 246, 0.1));
+  padding: 6px 16px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  z-index: 2;
+  letter-spacing: 1px;
+}
+
+/* Client Name */
+.duo-name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  z-index: 2;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .duo-showcase-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin-top: 30px;
+  }
+  .duo-card {
+    width: 100%;
+    max-width: 360px;
+    padding: 30px 20px;
+  }
+  .duo-showcase-container:hover .duo-card:not(:hover) {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .duo-logo-circle {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+  }
+  .duo-name {
+    font-size: 1.3rem;
+  }
+}
 

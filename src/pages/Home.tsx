@@ -22,6 +22,44 @@ import "./homeMobile.css";
 import "./HomePro.css";
 import "./HomeProTablet.css";
 import "./HomeProMobile.css";
+import SamyukthaLogo from "../assets/samyuktha_logo.jpg";
+import MaduraiBestToursLogo from "../assets/madurai_best_tours_logo.jpeg";
+
+const clients = [
+  {
+    name: "Madurai Tour Taxi",
+    logo: "https://maduraitourtaxi.com/logo.png",
+    url: "https://maduraitourtaxi.com/",
+    glow: "rgba(234, 179, 8, 0.35)",
+    border: "#eab308",
+    text: "#ca8a04",
+    bg: "rgba(234, 179, 8, 0.1)",
+    tag: "Cab Service",
+    icon: "🚕"
+  },
+  {
+    name: "Samyuktha Tours & Travels",
+    logo: SamyukthaLogo,
+    url: "https://share.google/h0d9jPKk4eO343XJa",
+    glow: "rgba(56, 189, 248, 0.35)",
+    border: "#38bdf8",
+    text: "#0284c7",
+    bg: "rgba(56, 189, 248, 0.1)",
+    tag: "Tours & Travels",
+    icon: "🗺️"
+  },
+  {
+    name: "Madurai Best Tours & Travels",
+    logo: MaduraiBestToursLogo,
+    url: "#",
+    glow: "rgba(234, 88, 12, 0.35)",
+    border: "#ea580c",
+    text: "#c2410c",
+    bg: "rgba(234, 88, 12, 0.1)",
+    tag: "Tours & Travels",
+    icon: "🚐"
+  }
+];
 
 const Home: React.FC = () => {
   // Component States
@@ -62,17 +100,112 @@ const Home: React.FC = () => {
     { icon: '🤝', title: 'Custom CRM Platforms', desc: 'Relationship management gateways boosting sales capabilities.' }
   ];
 
-  // Customer Feedback Data (Expanded)
   const customerFeedbacks = [
-    { id: 1, name: "Karthikeyan S.", role: "Owner, Kovai Textiles", rating: 5, text: "Our factory billing and stock management is now fully automated. Saved us hours every single day!", avatar: "KS" },
-    { id: 2, name: "Dr. Meenakshi R.", role: "Founder, Madurai MediCare", rating: 5, text: "Patient records, appointments, billing — everything in one place. Our clinic runs so smoothly now.", avatar: "MR" },
-    { id: 3, name: "Suresh Babu M.", role: "Principal, Sri Vidya Academy", rating: 4.5, text: "Students love our new learning portal. Attendance, marks, online tests — all digital now. Great work!", avatar: "SB" },
-    { id: 4, name: "Vignesh Pandian", role: "Manager, Chennai Cargo Hub", rating: 5, text: "Live tracking, route updates, delivery reports — exactly what we needed. Deliveries are on time now!", avatar: "VP" },
-    { id: 5, name: "Annamalai K.", role: "Director, Trichy Finance Co.", rating: 4.8, text: "Loan processing and customer ledger management became ten times faster. Very reliable software team.", avatar: "AK" },
-    { id: 6, name: "Kavitha Lakshmi", role: "Owner, Coimbatore Silk Store", rating: 4.5, text: "My saree shop now sells online too! Orders are coming from across India. Best decision I made.", avatar: "KL" },
-    { id: 7, name: "Priya Darshini", role: "CEO, TechNova Solutions", rating: 5, text: "CodeThrive built a stunning SaaS platform for us entirely from scratch. Outstanding UI/UX and zero bugs.", avatar: "PD" },
-    { id: 8, name: "Ramesh Kannan", role: "Director, RK Constructions", rating: 4.9, text: "Site managers can now log daily expenses and upload site photos. Really modernized our workflow completely.", avatar: "RK" },
-    { id: 9, name: "Sanjana Iyer", role: "Founder, Glow Beauty App", rating: 5, text: "Our mobile app skyrocketed our bookings. The payment gateway integration is flawless and lightning fast.", avatar: "SI" }
+    {
+      id: 1,
+      name: "Arun K.",
+      role: "Medical Shop",
+      rating: 5,
+      text: "The inventory and billing system is now completely digital. Stock never gets misplaced and patients appreciate the swift checkout."
+    },
+    {
+      id: 2,
+      name: "Meena R.",
+      role: "Travels",
+      rating: 4.5,
+      text: "Online booking and itinerary management saved us hours daily. Our agents love the real-time tracking dashboard."
+    },
+    {
+      id: 3,
+      name: "Vikram S.",
+      role: "Cargo Hub",
+      rating: 4,
+      text: "Live route updates and automated paperwork cut our admin time by half. Delivery schedules are now rock-solid."
+    },
+    {
+      id: 4,
+      name: "Lakshmi N.",
+      role: "Boutique",
+      rating: 3.5,
+      text: "The e-commerce portal helped us reach customers nationwide, though we wish for a few more payment options."
+    },
+    {
+      id: 5,
+      name: "Ramesh K.",
+      role: "Construction",
+      rating: 5,
+      text: "Daily expense logging and photo uploads keep our site managers accountable. The workflow feels modern and transparent."
+    },
+    {
+      id: 6,
+      name: "Priya D.",
+      role: "Academy",
+      rating: 4,
+      text: "Student attendance, grades and online exams are now in one place. Teachers love the intuitive UI, and parents appreciate the portal."
+    },
+    {
+      id: 7,
+      name: "Sanjay P.",
+      role: "Logistics",
+      rating: 4.5,
+      text: "Real-time tracking and automated billing saved us countless hours. The dashboard is sleek and intuitive."
+    },
+    {
+      id: 8,
+      name: "Anita M.",
+      role: "Organic Farm",
+      rating: 5,
+      text: "Our farm's e‑commerce platform now handles orders nationwide. Customers love the fresh feel and fast checkout."
+    },
+    {
+      id: 9,
+      name: "Dr. Kumar",
+      role: "Medical Shop",
+      rating: 4.5,
+      text: "Our new digital prescription system reduced errors and sped up patient checkout, making the shop more efficient."
+    },
+    {
+      id: 10,
+      name: "Sneha L.",
+      role: "Home Interiors",
+      rating: 5,
+      text: "The interior design configurator boosted sales by 30%; customers love the 3D preview experience."
+    },
+    {
+      id: 11,
+      name: "Rohit K.",
+      role: "Tech Solutions",
+      rating: 4.5,
+      text: "Our platform now integrates AI-powered analytics, giving clients deeper insights without extra plugins."
+    },
+    {
+      id: 12,
+      name: "Meena S.",
+      role: "Travel Agency",
+      rating: 4,
+      text: "The travel booking suite streamlined itineraries, and customers praise the smooth checkout flow."
+    },
+    {
+      id: 13,
+      name: "Anand M.",
+      role: "Medical Shop",
+      rating: 4,
+      text: "Our new digital prescription system improved patient flow and reduced errors."
+    },
+    {
+      id: 14,
+      name: "Sanjana P.",
+      role: "Travels",
+      rating: 5,
+      text: "The booking platform lets us manage tours effortlessly, customers love the seamless experience."
+    },
+    {
+      id: 15,
+      name: "Rohini K.",
+      role: "Hotel",
+      rating: 4.5,
+      text: "Integrated reservation system boosted occupancy rates and streamlined front desk operations."
+    }
   ];
 
   useEffect(() => {
@@ -544,6 +677,75 @@ const Home: React.FC = () => {
           </div>
         </section>
 
+        {/* OUR CLIENTS SECTION */}
+        <section className="pro-section bg-light relative overflow-hidden" id="our-clients">
+          <div className="pro-container">
+            <motion.div 
+              variants={animateUp} 
+              initial="hidden" 
+              whileInView="visible" 
+              viewport={{ once: true, margin: "-100px" }} 
+              className="pro-center-header"
+            >
+              <span className="pro-label gradient-bg">Our Clients</span>
+              <h2 className="pro-heading">Trusted By Leading Brands</h2>
+              <p className="pro-desc">We build long-term relationships with businesses to drive digital transformation and growth.</p>
+            </motion.div>
+
+            <motion.div 
+              className="duo-showcase-container"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.25 }
+                }
+              }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              {clients.map((client, i) => (
+                <motion.div
+                  key={i}
+                  className="duo-card"
+                  style={{
+                    '--client-glow-color': client.glow,
+                    '--client-border-color': client.border,
+                    '--client-text-color': client.text,
+                    '--client-bg-color': client.bg
+                  } as React.CSSProperties}
+                  variants={{
+                    hidden: { opacity: 0, y: 50 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                  }}
+                >
+                  <div className="duo-card-glow" />
+                  <div className="duo-logo-box">
+                    {client.logo ? (
+                      <img 
+                        src={client.logo} 
+                        alt={client.name} 
+                        className="duo-logo-img"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          const fallback = e.currentTarget.parentElement?.querySelector('.client-fallback-avatar') as HTMLElement;
+                          if (fallback) fallback.style.display = 'block';
+                        }}
+                      />
+                    ) : null}
+                    <span className="client-fallback-avatar" style={{ display: client.logo ? 'none' : 'block', fontSize: '2.5rem' }}>
+                      {client.icon}
+                    </span>
+                  </div>
+                  <span className="duo-tag">{client.tag}</span>
+                  <h3 className="duo-name">{client.name}</h3>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
         {/* CUSTOMER FEEDBACKS - CAROUSEL GRID */}
         <section className="pro-section bg-light relative overflow-hidden" id="testimonials">
           <motion.div animate={{ x: [-100, 100, -100] }} transition={{ duration: 15, repeat: Infinity, ease: "linear"}} className="bg-shape shape-left" />
@@ -567,8 +769,6 @@ const Home: React.FC = () => {
                   style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', width: '100%' }}
                 >
                   {customerFeedbacks.slice(testimonyIndex, testimonyIndex + 3).map((feedback, idx) => {
-                    const avatarColors = ['#f59e0b', '#10b981', '#8b5cf6', '#3b82f6', '#ef4444', '#ec4899', '#06b6d4', '#f97316'];
-                    const color = avatarColors[feedback.id % avatarColors.length];
                     return (
                       <motion.div 
                         key={feedback.id}
@@ -583,11 +783,8 @@ const Home: React.FC = () => {
                           {Array.from({ length: Math.floor(feedback.rating) }).map((_, i) => "★")}
                           {feedback.rating % 1 !== 0 ? "★" : ""}
                         </div>
-                        <p className="pro-review-text">"{feedback.text}"</p>
+                        <p className="pro-review-text">{feedback.text}</p>
                         <div className="pro-reviewer">
-                          <div className="pro-avatar" style={{ background: color }}>
-                            {feedback.avatar}
-                          </div>
                           <div className="pro-reviewer-info">
                             <h4>{feedback.name}</h4>
                             <span>{feedback.role}</span>
@@ -631,14 +828,46 @@ const Home: React.FC = () => {
             
             <motion.div variants={animateUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="pro-faq-list">
               {[
-                {q: "What services do you offer?", a: "We deliver tailored digital solutions including advanced web development, scalable mobile applications, intuitive UI/UX design, and strategic SEO services. From business websites to enterprise-grade platforms, we ensure high-performance, secure, and growth-driven results."},
-                {q: "How long does it take to build a website?", a: "A standard corporate website usually takes 2-4 weeks, while complex web applications may take 2-3 months. We provide a detailed timeline during our initial consultation."},
-                {q: "Do you provide maintenance and support?", a: "Yes, we offer ongoing maintenance, security updates, and performance monitoring to ensure your software runs smoothly long after the initial launch."},
-                {q: "Will my website be mobile-friendly and SEO optimized?", a: "Absolutely. Every project we deliver is 100% responsive and built with technical SEO best practices, ensuring fast load times and optimal search engine visibility."},
-                {q: "How scalable are your enterprise cloud software solutions?", a: "Our enterprise architectures are designed horizontally and vertically scalable utilizing cutting-edge Kubernetes, AWS, and serverless infrastructures to instantly scale with business traffic without incurring immediate massive costs."},
-                {q: "What sets CodeThrive security standards apart?", a: "We utilize zero-trust models, performing continuous automated audits, database encryption at rest and in transit, paired with global ISO compliance parameters, ensuring absolute data integrity."},
-                {q: "Do you implement intelligent AI within your platforms?", a: "Yes! We deeply integrate custom automation protocols and Large Language Models directly into our products to replace repetitive workflow hours with instantaneous intelligent insights."},
-                {q: "What is your typical project onboarding workflow?", a: "We begin with a thorough technical audit followed by rapid prototyping, establishing tight feedback loops with your core teams, meaning you are fully immersed in visual progress before any complex coding begins."}
+                {
+                  q: "How much does it cost to build a website or app for my business?",
+                  a: "The cost varies based on your project scope, features, and business requirements. We offer flexible packages tailored for small businesses, startups, and enterprises. Every project is unique, so we provide a detailed, no-obligation quote after understanding your specific needs. Contact us to get a custom estimate."
+                },
+                {
+                  q: "How long will it take to complete my project?",
+                  a: "A simple business website is usually ready within 1–2 weeks. A fully custom web or mobile application takes 4–8 weeks depending on the features. We share a clear project timeline before we start and keep you updated at every stage — no surprises."
+                },
+                {
+                  q: "I am not tech-savvy — can I manage my website on my own after it is built?",
+                  a: "Absolutely. We build easy-to-use admin panels so you can update products, services, prices, photos, and content yourself — no technical knowledge needed. We also provide hands-on training and a simple user guide after project delivery."
+                },
+                {
+                  q: "Will my website work properly on mobile phones and tablets?",
+                  a: "Yes — every website and app we build is fully mobile-responsive. It will look great and function perfectly on smartphones, tablets, and desktops. Mobile-friendliness is a standard feature in all our projects."
+                },
+                {
+                  q: "Can you build a billing, booking, or inventory system for my shop or business?",
+                  a: "Yes! We build custom management systems for medical shops (inventory & billing), travel businesses (bookings & itineraries), hotels (reservations), restaurants (orders & menus), rice mills, and more. Tell us your workflow and we will build a system that fits your exact business process."
+                },
+                {
+                  q: "Will my business appear on Google search after you build the website?",
+                  a: "We build all websites with SEO best practices — fast loading speed, proper headings, meta descriptions, and mobile-friendly structure — which helps Google discover and rank your website. We also assist you in setting up Google Business Profile for better local search visibility."
+                },
+                {
+                  q: "Do you provide support after the website is launched?",
+                  a: "Yes. We provide post-launch support including bug fixes, content updates, and performance checks. We also offer affordable monthly maintenance plans starting from ₹1,500/month to keep your website fast, secure, and up-to-date."
+                },
+                {
+                  q: "Who will own the website and its code after the project is done?",
+                  a: "You own 100% of your website, source code, and all content once the project is fully paid. We hand over all files, login credentials, and hosting access to you. There are no hidden lock-in contracts."
+                },
+                {
+                  q: "What information do I need to provide to get started?",
+                  a: "We just need a brief about your business, the services or products you offer, your target customers, any design preferences (colors, style references), and your budget and expected timeline. We guide you step-by-step — no need to prepare anything technical."
+                },
+                {
+                  q: "How do I get in touch and start my project?",
+                  a: "It is simple — click the 'Book a Call' button on this page or visit our Contact section. Our team will reach out within 24 hours for a free consultation, answer all your questions, and provide a detailed quote with no obligation."
+                }
               ].map((faq, i) => (
                 <details className="pro-faq-item" key={i}>
                   <summary className="pro-faq-q">

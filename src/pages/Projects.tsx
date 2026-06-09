@@ -19,158 +19,144 @@ interface Project {
 
 const demoProjects: Project[] = [
   {
-    id: 6,
-    title: 'Food Restaurant Website',
-    description: 'A highly visual, premium website template designed for gourmet restaurants.',
+    id: 12,
+    title: 'Madurai Tour Taxi',
+    description: 'A premium cab service and tour booking platform offering optimized travel packages and reliable rides.',
     features: [
-      'Signature Menus',
-      'Table Booking System',
-      'Dynamic Hero Section',
-      'Responsive Layout',
-      'Interactive Culinary Showcase',
+      'Customized Tour Packages',
+      'Real-time Cab Booking',
+      'Local & Outstation Travel',
+      'Professional Driver Network',
+      '24/7 Customer Support',
     ],
     category: 'Web',
-    demoPath: '/demo/food-restaurant'
+    demoPath: 'https://maduraitourtaxi.com/'
   },
   {
-    id: 8,
-    title: 'Rice Mill Management System',
-    description: 'An advanced, colorful, and fully animated ERP solution designed specifically for modern rice mill operations.',
+    id: 13,
+    title: 'Samyuktha Tours & Travels',
+    description: 'A comprehensive travel agency management portal facilitating safe, comfortable passenger tours.',
     features: [
-      'Paddy Procurement & Weighbridge',
-      'Inventory & Silo Management',
-      'Milling Process Control',
-      'Quality Checking (QC)',
-      'Sales & Dispatch Logistics',
+      'South India Tour Packages',
+      'Dynamic Fleet Management',
+      'Instant Quote Booking',
+      'Travel Route Planner',
+      'Secure Billing Ledger',
     ],
-    category: 'Enterprise',
-    demoPath: '/demo/rice-mill'
+    category: 'Web',
+    demoPath: 'https://share.google/h0d9jPKk4eO343XJa'
   },
   {
-    id: 1,
-    title: "Supermarket Billing System",
-    description: "A scalable POS and billing management solution for modern retail operations.",
+    id: 14,
+    title: 'Restaurant Website',
+    description: 'A premium, highly interactive dining website template designed for modern fine dining and restaurant venues.',
     features: [
-      "Barcode scanning",
-      "GST billing",
-      "Daily sales reports",
-      "Product & stock management",
-      "Multi-branch support",
+      'Visual Signature Menu Showcase',
+      'Interactive Reservations Booking',
+      'Responsive Mobile-First Interface',
+      'Dynamic Banner Hero Sections',
+      'Gourmet Culinary Galleries',
     ],
-    category: "Enterprise",
-    demoPath: "/demo/billing"
+    category: 'Web',
+    demoPath: 'https://chipper-narwhal-2b443d.netlify.app/'
   },
   {
-    id: 2,
-    title: "E-Commerce Website",
-    description: "A modern online shopping platform with seamless user experience.",
+    id: 15,
+    title: 'Gym Website',
+    description: 'An energetic, modern fitness club management and scheduling portal with vibrant animations.',
     features: [
-      "Product catalog",
-      "Cart & checkout",
-      "Online payments",
-      "Admin panel",
-      "Order tracking",
+      'Interactive Class Schedules',
+      'Trainer Profile Highlights',
+      'Vibrant Progress Trackers',
+      'Membership Plan Checkout',
+      'Integrated Fitness Blog',
     ],
-    category: "Web",
-    demoPath: "/demo/ecommerce"
+    category: 'Web',
+    demoPath: 'https://ornate-squirrel-175112.netlify.app/'
   },
   {
-    id: 3,
-    title: "Ticket Booking System",
-    description: "A comprehensive system for booking movie, travel, and event tickets.",
+    id: 16,
+    title: 'Cake & Bakery Shop',
+    description: 'A charming, visual e-commerce catalog template for custom cakes, bakery goods, and online orders.',
     features: [
-      "Seat selection",
-      "Booking history",
-      "Online payment",
-      "User accounts",
-      "Event scheduling",
+      'Interactive Custom Cake Builder',
+      'Delightful Dessert Catalogs',
+      'Secure Ordering Checklist',
+      'Festive Event Catering Orders',
+      'Customer Loyalty Points',
     ],
-    category: "Web",
-    demoPath: "/demo/tickets"
+    category: 'Web',
+    demoPath: 'https://ephemeral-semolina-06c7fc.netlify.app/'
   },
   {
-    id: 4,
-    title: "College ERP Management",
-    description: "End-to-end ERP solution for academic institutions and universities.",
+    id: 17,
+    title: 'Medical Shop Website',
+    description: 'A clean, high-performance web storefront for medical shops, prescription uploads, and health products.',
     features: [
-      "Student record system",
-      "Exam & marks management",
-      "Attendance automation",
-      "Departments & staff",
-      "Timetable scheduling",
+      'Direct Prescription Uploads',
+      'OTC Drug Categorized Search',
+      'Secure Checkout Gateway',
+      'Real-time Medicine Inventory',
+      'Pharmacist Consultancy Panel',
     ],
-    category: "Enterprise",
-    demoPath: "/demo/college-erp"
+    category: 'Web',
+    demoPath: 'https://sparkly-pixie-11db8a.netlify.app/'
   },
   {
-    id: 5,
-    title: "Hospital Management System",
-    description: "A comprehensive system for patient care and clinical operations.",
+    id: 18,
+    title: 'Pet Shop Website',
+    description: 'A friendly and bright pet shop catalog website featuring interactive pet products and care services.',
     features: [
-      "Patient registration",
-      "Doctor scheduling",
-      "Billing & pharmacy",
-      "Medical records",
-      "Reports & analytics",
+      'Interactive Product Catalog',
+      'Pet Boarding Appointments',
+      'Breed Health Resource Hub',
+      'Vet Booking Calendar',
+      'Subscription Pet Food Delivery',
     ],
-    category: "AI",
-    demoPath: "/demo/hospital"
+    category: 'Web',
+    demoPath: 'https://joyful-gelato-a2cbd9.netlify.app/'
   },
   {
-    id: 7,
-    title: "Mobile Attendance App",
-    description: "A premium, sophisticated attendance management system for corporate enterprises.",
+    id: 19,
+    title: 'Groceries Shop',
+    description: 'A colorful, automated grocery store shopping website with quick checkout and instant cart management.',
     features: [
-      "Geo-Fencing Check-in",
-      "Biometric Verification",
-      "Live Analytics",
-      "Shift Management",
-      "Employee Portal",
+      'Lightning-Fast Cart Adder',
+      'Categorized Fresh Produce',
+      'Daily Special Deals & Coupons',
+      'Doorstep Delivery Scheduling',
+      'Organic Ingredient Verification',
     ],
-    category: "Enterprise",
-    demoPath: "/demo/attendance-app"
+    category: 'Web',
+    demoPath: 'https://stalwart-froyo-a435ec.netlify.app/'
   },
   {
-    id: 9,
-    title: "Real Estate & PropTech Portal",
-    description: "An immersive property listing ecosystem with 3D tours, blockchain contracts, and agent dashboards.",
+    id: 20,
+    title: 'Clothing Store',
+    description: 'A high-end clothing store catalog presenting the latest fashion apparel collections with dynamic visual grids.',
     features: [
-      "Property Listings & Search",
-      "Virtual 3D Tours",
-      "Agent CRM Dashboard",
-      "Automated Contracts",
-      "Lead Management",
+      'Interactive Fashion Lookbooks',
+      'Visual Size & Color Selectors',
+      'Dynamic Stock Counter',
+      'Trend-Setter Style Filtering',
+      'Seamless Shopping Experience',
     ],
-    category: "Web",
-    demoPath: "/demo/real-estate"
+    category: 'Web',
+    demoPath: 'https://luminous-strudel-016c8f.netlify.app/'
   },
   {
-    id: 10,
-    title: "Cloud HR Management",
-    description: "End-to-end cloud human resources management, payroll, and recruitment portal.",
+    id: 21,
+    title: 'Organics Store',
+    description: 'A clean, health-focused online store selling organic cosmetics, foods, and eco-friendly products.',
     features: [
-      "Employee Onboarding",
-      "Payroll & Taxes",
-      "Performance Reviews",
-      "Leave Balances",
-      "Recruitment Pipeline",
+      'Certified Organic Badge Finder',
+      'Eco-Friendly Zero Waste Guides',
+      'Custom Bundle Product Builder',
+      'Subscription Box Orders',
+      'Holistic Wellness Blog',
     ],
-    category: "Enterprise",
-    demoPath: "/demo/cloud-hr"
-  },
-  {
-    id: 11,
-    title: "Smart Logistics & Fleet Tracking",
-    description: "AI-powered global supply chain and fleet tracking platform with real-time route optimization.",
-    features: [
-      "Live GPS Tracking",
-      "Route Optimization",
-      "Driver App Integration",
-      "Fuel Monitoring",
-      "Freight Billing",
-    ],
-    category: "AI",
-    demoPath: "/demo/logistics"
+    category: 'Web',
+    demoPath: 'https://silly-syrniki-acc03b.netlify.app/'
   }
 ];
 
@@ -250,7 +236,13 @@ const ProjectsPage: React.FC = () => {
                  
                   <button
                     className="btn primary"
-                    onClick={() => navigate(project.demoPath)}
+                    onClick={() => {
+                      if (project.demoPath.startsWith("http")) {
+                        window.open(project.demoPath, "_blank");
+                      } else {
+                        navigate(project.demoPath);
+                      }
+                    }}
                   >
                     Live Demo
                   </button>
