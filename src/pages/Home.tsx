@@ -702,7 +702,8 @@ const Home: React.FC = () => {
                       '--client-glow-color': client.glow,
                       '--client-border-color': client.border,
                       '--client-text-color': client.text,
-                      '--client-bg-color': client.bg
+                      '--client-bg-color': client.bg,
+                      animationDelay: `${-(i % 3) * 1.67}s`
                     } as React.CSSProperties}
                     onClick={() => {
                       if (client.url && client.url !== "#") {
@@ -711,22 +712,30 @@ const Home: React.FC = () => {
                     }}
                   >
                     <div className="duo-card-glow" />
-                    <div className="duo-logo-box">
-                      {client.logo ? (
-                        <img 
-                          src={client.logo} 
-                          alt={client.name} 
-                          className="duo-logo-img"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                            const fallback = e.currentTarget.parentElement?.querySelector('.client-fallback-avatar') as HTMLElement;
-                            if (fallback) fallback.style.display = 'block';
-                          }}
-                        />
-                      ) : null}
-                      <span className="client-fallback-avatar" style={{ display: client.logo ? 'none' : 'block', fontSize: '2.5rem' }}>
-                        {client.icon}
-                      </span>
+                    <div className="logo-ring-wrapper"
+                      style={{
+                        '--client-glow-color': client.glow,
+                        '--client-border-color': client.border,
+                      } as React.CSSProperties}
+                    >
+                      <div className="duo-logo-box">
+                        {client.logo ? (
+                          <img 
+                            src={client.logo} 
+                            alt={client.name} 
+                            className="duo-logo-img"
+                            style={{ animationDelay: `${-(i % 3) * 2}s` }}
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                              const fallback = e.currentTarget.parentElement?.querySelector('.client-fallback-avatar') as HTMLElement;
+                              if (fallback) fallback.style.display = 'block';
+                            }}
+                          />
+                        ) : null}
+                        <span className="client-fallback-avatar" style={{ display: client.logo ? 'none' : 'block', fontSize: '2.5rem' }}>
+                          {client.icon}
+                        </span>
+                      </div>
                     </div>
                     <span className="duo-tag">{client.tag}</span>
                     <h3 className="duo-name">{client.name}</h3>

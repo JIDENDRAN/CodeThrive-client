@@ -785,11 +785,82 @@ details[open] .pro-faq-plus {
     filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
   }
 }
+/* ============================================================ */
+/* OUR CLIENTS SECTION – PREMIUM ANIMATED                       */
+/* ============================================================ */
+
+/* === ALL KEYFRAME ANIMATIONS === */
+
+/* 1. Gentle floating up-down for cards */
+@keyframes client-float {
+  0%, 100% { transform: translateY(0px)    rotate(0deg); }
+  25%       { transform: translateY(-8px)  rotate(0.4deg); }
+  50%       { transform: translateY(-16px) rotate(-0.3deg); }
+  75%       { transform: translateY(-6px)  rotate(0.2deg); }
+}
+
+/* 2. Spinning conic ring around logo */
+@keyframes ring-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 3. Shimmer light sweep across logo box */
+@keyframes logo-shimmer {
+  0%   { left: -130%; opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { left: 160%;  opacity: 0; }
+}
+
+/* 4. Pulsating radial glow on card background */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1);    }
+  50%       { opacity: 0.9; transform: scale(1.08); }
+}
+
+/* 5. Logo image periodic bounce */
+@keyframes logo-bounce-anim {
+  0%, 72%, 100% { transform: scale(1)    rotate(0deg); }
+  76%           { transform: scale(1.14) rotate(-4deg); }
+  82%           { transform: scale(1.08) rotate(3deg);  }
+  90%           { transform: scale(1.04) rotate(-1deg); }
+}
+
+/* 6. Tag badge animated gradient sweep */
+@keyframes tag-shimmer {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+/* 7. Corner sparkle blink */
+@keyframes sparkle-blink {
+  0%, 100%  { opacity: 0; transform: scale(0) rotate(0deg);   }
+  40%, 60%  { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+/* 8. Card background gradient breathe */
+@keyframes card-bg-breathe {
+  0%, 100% { background-position: 0%   50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+/* 9. Name text color shimmer on hover */
+@keyframes name-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* 10. Ring glow pulse on logo-ring-wrapper */
+@keyframes ring-glow-pulse {
+  0%, 100% { filter: blur(0px)   brightness(1);   }
+  50%       { filter: blur(1px)  brightness(1.4);  }
+}
+
 /* ========================================== */
-/* OUR CLIENTS SECTION                       */
+/* DUO SHOWCASE CONTAINER (legacy fallback)   */
 /* ========================================== */
-/* Ticker/Marquee container */
-/* Duo Showcase layout for exactly 2 clients */
 .duo-showcase-container {
   display: flex;
   justify-content: center;
@@ -800,13 +871,32 @@ details[open] .pro-faq-plus {
   flex-wrap: wrap;
 }
 
+/* ========================================== */
+/* MARQUEE CARD – FLOATING ANIMATION          */
+/* ========================================== */
+.marquee-card {
+  width: 380px;
+  flex-shrink: 0;
+  animation: client-float 5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+/* ========================================== */
+/* DUO CARD BASE STYLES                       */
+/* ========================================== */
 .duo-card {
   flex: 1;
   max-width: 420px;
-  background: rgba(255, 255, 255, 0.7);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(240, 248, 255, 0.78) 50%,
+    rgba(255, 255, 255, 0.88) 100%
+  );
+  background-size: 300% 300%;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
   border-radius: 30px;
   padding: 40px 30px;
   display: flex;
@@ -815,94 +905,260 @@ details[open] .pro-faq-plus {
   text-align: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
   transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
+  animation: card-bg-breathe 10s ease-in-out infinite;
 }
 
-/* Background mesh glow */
+/* Top-left sparkle ✦ */
+.duo-card::before {
+  content: '✦';
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  font-size: 0.7rem;
+  color: var(--client-border-color, #3b82f6);
+  animation: sparkle-blink 3.5s ease-in-out infinite;
+  z-index: 6;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Bottom-right sparkle ✦ */
+.duo-card::after {
+  content: '✦';
+  position: absolute;
+  bottom: 18px;
+  right: 22px;
+  font-size: 0.5rem;
+  color: var(--client-border-color, #3b82f6);
+  animation: sparkle-blink 3.5s ease-in-out infinite;
+  animation-delay: -1.75s;
+  z-index: 6;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* ========================================== */
+/* CARD RADIAL GLOW BACKGROUND BLOB           */
+/* ========================================== */
 .duo-card-glow {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, var(--client-glow-color, rgba(59, 130, 246, 0.1)) 0%, transparent 60%);
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  background: radial-gradient(
+    circle at center,
+    var(--client-glow-color, rgba(59, 130, 246, 0.14)) 0%,
+    transparent 65%
+  );
   opacity: 0.5;
   z-index: 1;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.6s ease;
   pointer-events: none;
+  animation: glow-pulse 4.5s ease-in-out infinite;
+}
+
+/* ========================================== */
+/* CARD HOVER STATE                           */
+/* ========================================== */
+.duo-card:hover {
+  transform: translateY(-16px) scale(1.04);
+  border-color: var(--client-border-color, #3b82f6);
+  box-shadow:
+    0 35px 65px var(--client-glow-color, rgba(0, 0, 0, 0.14)),
+    0 0 0 1.5px var(--client-border-color, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 .duo-card:hover .duo-card-glow {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* Pause floating when hovered */
+.marquee-card:hover {
+  animation-play-state: paused;
+}
+
+/* ========================================== */
+/* LOGO RING WRAPPER – SPINNING BORDER RING   */
+/* ========================================== */
+.logo-ring-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px;
+  z-index: 2;
+  border-radius: 24px;
+}
+
+/* Spinning conic-gradient ring */
+.logo-ring-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 25px;
+  background: conic-gradient(
+    from 0deg,
+    transparent        0deg,
+    var(--client-border-color, #3b82f6)  55deg,
+    rgba(255,255,255,0.15) 110deg,
+    transparent       175deg,
+    transparent       215deg,
+    var(--client-border-color, #3b82f6) 285deg,
+    transparent       340deg,
+    transparent       360deg
+  );
+  animation: ring-spin 3s linear infinite, ring-glow-pulse 3s ease-in-out infinite;
+  z-index: 0;
   opacity: 0.9;
 }
 
-.duo-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  border-color: var(--client-border-color, #e2e8f0);
-  box-shadow: 0 20px 40px var(--client-glow-color, rgba(0, 0, 0, 0.08));
+/* Inner white mask – shows only the 4px ring border */
+.logo-ring-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0px;
+  border-radius: 21px;
+  background: #ffffff;
+  z-index: 1;
+  pointer-events: none;
 }
 
-/* Logo box container */
+/* ========================================== */
+/* DUO LOGO BOX                               */
+/* ========================================== */
 .duo-logo-box {
   width: 100%;
   height: 120px;
   background: #ffffff;
   border-radius: 20px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 25px;
   z-index: 2;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
   position: relative;
-  transition: all 0.5s ease;
   overflow: hidden;
   padding: 15px;
+  /* removed margin-bottom – wrapper handles it */
+  transition: all 0.5s ease;
 }
+
+/* Shimmer sweep on logo box */
+.duo-logo-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.92) 45%,
+    rgba(255, 255, 255, 0.92) 55%,
+    transparent
+  );
+  transform: skewX(-22deg);
+  animation: logo-shimmer 4.5s ease-in-out infinite;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Stagger shimmer timing per card position */
+.clients-marquee-content > :nth-child(3n+2) .duo-logo-box::before { animation-delay: -1.5s; }
+.clients-marquee-content > :nth-child(3n+3) .duo-logo-box::before { animation-delay: -3.0s; }
 
 .duo-card:hover .duo-logo-box {
   border-color: var(--client-border-color, #3b82f6);
-  box-shadow: 0 12px 30px var(--client-glow-color, rgba(0, 0, 0, 0.08));
+  box-shadow: 0 0 20px var(--client-glow-color, rgba(59,130,246,0.25));
 }
 
+/* ========================================== */
+/* LOGO IMAGE                                 */
+/* ========================================== */
 .duo-logo-img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  transition: transform 0.5s ease;
+  position: relative;
+  z-index: 4;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  animation: logo-bounce-anim 7s ease-in-out infinite;
 }
 
 .duo-card:hover .duo-logo-img {
-  transform: scale(1.06);
+  transform: scale(1.12) rotate(-3deg);
+  filter: drop-shadow(0 6px 14px var(--client-glow-color, rgba(59,130,246,0.5)));
+  animation-play-state: paused;
 }
 
-/* Label tag */
+/* ========================================== */
+/* TAG BADGE – ANIMATED GRADIENT              */
+/* ========================================== */
 .duo-tag {
   font-size: 0.8rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: var(--client-text-color, #3b82f6);
-  background: var(--client-bg-color, rgba(59, 130, 246, 0.1));
-  padding: 6px 16px;
+  letter-spacing: 1.2px;
+  padding: 6px 18px;
   border-radius: 50px;
   margin-bottom: 20px;
   z-index: 2;
-  letter-spacing: 1px;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    var(--client-bg-color,     rgba(59,130,246,0.12)),
+    var(--client-border-color, rgba(59,130,246,0.38)),
+    var(--client-bg-color,     rgba(59,130,246,0.12))
+  );
+  background-size: 300% 100%;
+  color: var(--client-text-color, #3b82f6);
+  border: 1px solid var(--client-border-color, rgba(59,130,246,0.3));
+  animation: tag-shimmer 3.5s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Client Name */
+.duo-card:hover .duo-tag {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 5px 18px var(--client-glow-color, rgba(59,130,246,0.3));
+}
+
+/* ========================================== */
+/* CLIENT NAME                                */
+/* ========================================== */
 .duo-name {
   font-size: 1.6rem;
   font-weight: 800;
   color: #0f172a;
   margin: 0;
   z-index: 2;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-/* Mobile responsive */
+.duo-card:hover .duo-name {
+  background: linear-gradient(
+    90deg,
+    #0f172a,
+    var(--client-border-color, #3b82f6),
+    #0f172a
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: name-shimmer 1.8s linear;
+}
+
+/* ========================================== */
+/* MOBILE RESPONSIVE                          */
+/* ========================================== */
 @media (max-width: 768px) {
   .duo-showcase-container {
     flex-direction: column;
@@ -915,38 +1171,31 @@ details[open] .pro-faq-plus {
     max-width: 360px;
     padding: 30px 20px;
   }
-  .duo-showcase-container:hover .duo-card:not(:hover) {
-    opacity: 1;
-    transform: none;
-    filter: none;
-  }
-  .duo-logo-circle {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 20px;
-  }
   .duo-name {
     font-size: 1.3rem;
   }
+  .duo-logo-box {
+    height: 100px;
+  }
 }
 
-/* ========================================== */
-/* CLIENTS MARQUEE TICKER                     */
-/* ========================================== */
+/* ============================================================ */
+/* CLIENTS MARQUEE TICKER                                       */
+/* ============================================================ */
 .clients-marquee-container {
   overflow: hidden;
   width: 100%;
   position: relative;
   padding: 40px 0;
-  mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+  mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
 }
 
 .clients-marquee-content {
   display: flex;
   gap: 40px;
   width: max-content;
-  animation: marquee-scroll 25s linear infinite;
+  animation: marquee-scroll 28s linear infinite;
   will-change: transform;
 }
 
@@ -954,147 +1203,24 @@ details[open] .pro-faq-plus {
   animation-play-state: paused;
 }
 
-.marquee-card {
-  width: 380px;
-  flex-shrink: 0;
-  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-/* Bobbing/wave animation for marquee cards */
-.clients-marquee-content .marquee-card:nth-child(3n+1) {
-  animation: card-bob-1 6s ease-in-out infinite;
-}
-.clients-marquee-content .marquee-card:nth-child(3n+2) {
-  animation: card-bob-2 5s ease-in-out infinite;
-}
-.clients-marquee-content .marquee-card:nth-child(3n+3) {
-  animation: card-bob-3 7s ease-in-out infinite;
-}
-
-@keyframes card-bob-1 {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-@keyframes card-bob-2 {
-  0%, 100% { transform: translateY(-6px); }
-  50% { transform: translateY(6px); }
-}
-
-@keyframes card-bob-3 {
-  0%, 100% { transform: translateY(4px); }
-  50% { transform: translateY(-8px); }
-}
-
-.marquee-card:hover {
-  animation-play-state: paused !important;
-  transform: translateY(-20px) scale(1.06) !important;
-  box-shadow: 0 25px 60px var(--client-glow-color, rgba(0,0,0,0.12)) !important;
-  border-color: var(--client-border-color, #3b82f6) !important;
-}
-
-/* Shiny reflection swept animation for logo box */
-.duo-logo-box {
-  overflow: hidden;
-  position: relative;
-}
-
-.duo-logo-box::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.6),
-    transparent
-  );
-  transform: skewX(-25deg);
-  transition: 0.75s;
-}
-
-.duo-card:hover .duo-logo-box::after {
-  left: 150%;
-  transition: 0.75s ease;
-}
-
-.duo-logo-img {
-  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.5s ease;
-}
-
-.duo-card:hover .duo-logo-img {
-  transform: scale(1.1);
-  filter: drop-shadow(0 8px 16px var(--client-glow-color));
-}
-
-/* Pulse tag animation on hover */
-.duo-card:hover .duo-tag {
-  animation: pulse-tag 1.5s infinite;
-}
-
-@keyframes pulse-tag {
-  0% { box-shadow: 0 0 0 0 var(--client-glow-color); }
-  70% { box-shadow: 0 0 0 8px transparent; }
-  100% { box-shadow: 0 0 0 0 transparent; }
-}
-
 @keyframes marquee-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-1260px); /* 3 cards * (380px + 40px gap) */
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-1260px); /* 3 × (380px card + 40px gap) */ }
 }
 
-/* Mobile responsive for marquee */
+/* Mobile marquee */
 @media (max-width: 768px) {
   .marquee-card {
     width: 300px;
   }
-  
-  .clients-marquee-content .marquee-card:nth-child(3n+1) {
-    animation: card-bob-mobile-1 6s ease-in-out infinite;
-  }
-  .clients-marquee-content .marquee-card:nth-child(3n+2) {
-    animation: card-bob-mobile-2 5s ease-in-out infinite;
-  }
-  .clients-marquee-content .marquee-card:nth-child(3n+3) {
-    animation: card-bob-mobile-3 7s ease-in-out infinite;
-  }
-  
-  @keyframes card-bob-mobile-1 {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
-  @keyframes card-bob-mobile-2 {
-    0%, 100% { transform: translateY(-3px); }
-    50% { transform: translateY(3px); }
-  }
-  @keyframes card-bob-mobile-3 {
-    0%, 100% { transform: translateY(2px); }
-    50% { transform: translateY(-4px); }
-  }
-
-  .marquee-card:hover {
-    transform: translateY(-10px) scale(1.04) !important;
-  }
-
   .clients-marquee-content {
     gap: 20px;
-    animation: marquee-scroll-mobile 20s linear infinite;
+    animation: marquee-scroll-mobile 22s linear infinite;
   }
-  
   @keyframes marquee-scroll-mobile {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-960px); /* 3 cards * (300px + 20px gap) */
-    }
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-960px); /* 3 × (300px + 20px) */ }
   }
 }
+
 
