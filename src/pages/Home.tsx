@@ -29,7 +29,7 @@ const clients = [
   {
     name: "Madurai Tour Taxi",
     logo: "https://maduraitourtaxi.com/logo.png",
-    url: "https://maduraitourtaxi.com/",
+    url: "#",
     glow: "rgba(234, 179, 8, 0.35)",
     border: "#eab308",
     text: "#ca8a04",
@@ -40,7 +40,7 @@ const clients = [
   {
     name: "Samyuktha Tours & Travels",
     logo: SamyukthaLogo,
-    url: "https://share.google/h0d9jPKk4eO343XJa",
+    url: "#",
     glow: "rgba(56, 189, 248, 0.35)",
     border: "#38bdf8",
     text: "#0284c7",
@@ -64,6 +64,11 @@ const clients = [
 const Home: React.FC = () => {
   // Component States
   const [testimonyIndex, setTestimonyIndex] = useState(0);
+  const [marqueePaused, setMarqueePaused] = useState(false);
+  const pauseMarquee = () => {
+    setMarqueePaused(true);
+    setTimeout(() => setMarqueePaused(false), 2000);
+  };
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [currentIndustryIndex, setCurrentIndustryIndex] = useState(0);
   const [showAllServices, setShowAllServices] = useState(false);
@@ -688,14 +693,14 @@ const Home: React.FC = () => {
               className="pro-center-header"
             >
               <span className="pro-label gradient-bg">Our Clients</span>
-              <h2 className="pro-heading">Trusted By Leading Brands</h2>
+              <h2 className="pro-heading gradient-animated">Trusted By Leading Brands</h2>
               <p className="pro-desc">We build long-term relationships with businesses to drive digital transformation and growth.</p>
             </motion.div>
 
             <div className="clients-marquee-container">
-              <div className="clients-marquee-content">
+              <div className="clients-marquee-content" style={{ animationPlayState: marqueePaused ? 'paused' : 'running' }}>
                 {[...clients, ...clients, ...clients].map((client, i) => (
-                  <div
+                  <motion.div
                     key={i}
                     className="duo-card marquee-card"
                     style={{
@@ -705,7 +710,10 @@ const Home: React.FC = () => {
                       '--client-bg-color': client.bg,
                       animationDelay: `${-(i % 3) * 1.67}s`
                     } as React.CSSProperties}
+                    whileHover={{ rotateY: 10, rotateX: 5, scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
                     onClick={() => {
+                      pauseMarquee();
                       if (client.url && client.url !== "#") {
                         window.open(client.url, "_blank");
                       }
@@ -713,17 +721,17 @@ const Home: React.FC = () => {
                   >
                     <div className="duo-card-glow" />
                     <div className="logo-ring-wrapper"
-                      style={{
-                        '--client-glow-color': client.glow,
-                        '--client-border-color': client.border,
-                      } as React.CSSProperties}
-                    >
-                      <div className="duo-logo-box">
+  style={{
+    '--client-glow-color': client.glow,
+    '--client-border-color': client.border,
+  } as React.CSSProperties}>
+  <div className="particle-burst" />
+  <div className="duo-logo-box">
                         {client.logo ? (
                           <img 
                             src={client.logo} 
                             alt={client.name} 
-                            className="duo-logo-img"
+                                                        className="duo-logo-img glitch"
                             style={{ animationDelay: `${-(i % 3) * 2}s` }}
                             onError={(e) => {
                               e.currentTarget.style.display = 'none';
@@ -739,7 +747,7 @@ const Home: React.FC = () => {
                     </div>
                     <span className="duo-tag">{client.tag}</span>
                     <h3 className="duo-name">{client.name}</h3>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>

@@ -806,12 +806,7 @@ details[open] .pro-faq-plus {
 }
 
 /* 3. Shimmer light sweep across logo box */
-@keyframes logo-shimmer {
-  0%   { left: -130%; opacity: 0; }
-  15%  { opacity: 1; }
-  85%  { opacity: 1; }
-  100% { left: 160%;  opacity: 0; }
-}
+
 
 /* 4. Pulsating radial glow on card background */
 @keyframes glow-pulse {
@@ -845,6 +840,12 @@ details[open] .pro-faq-plus {
   0%, 100% { background-position: 0%   50%; }
   50%       { background-position: 100% 50%; }
 }
+
+/* 8. Card background gradient breathe */
+@keyframes border-pulse {
+    0%, 100% { box-shadow: 0 0 5px var(--client-glow-color, rgba(59,130,246,0.3)); }
+    50% { box-shadow: 0 0 12px var(--client-glow-color, rgba(59,130,246,0.6)); }
+  }
 
 /* 9. Name text color shimmer on hover */
 @keyframes name-shimmer {
@@ -1013,7 +1014,7 @@ details[open] .pro-faq-plus {
     transparent       340deg,
     transparent       360deg
   );
-  animation: ring-spin 3s linear infinite, ring-glow-pulse 3s ease-in-out infinite;
+  animation: ring-glow-pulse 3s ease-in-out infinite;
   z-index: 0;
   opacity: 0.9;
 }
@@ -1033,46 +1034,27 @@ details[open] .pro-faq-plus {
 /* DUO LOGO BOX                               */
 /* ========================================== */
 .duo-logo-box {
-  width: 100%;
-  height: 120px;
-  background: #ffffff;
-  border-radius: 20px;
-  border: 1px solid transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  position: relative;
-  overflow: hidden;
-  padding: 15px;
-  /* removed margin-bottom – wrapper handles it */
-  transition: all 0.5s ease;
-}
+    width: 100%;
+    height: 120px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 2px solid var(--client-border-color, #3b82f6);
+    animation: border-pulse 4s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    position: relative;
+    overflow: hidden;
+    padding: 15px;
+    transition: all 0.5s ease;
+  }
 
 /* Shimmer sweep on logo box */
-.duo-logo-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -130%;
-  width: 55%;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255, 255, 255, 0.92) 45%,
-    rgba(255, 255, 255, 0.92) 55%,
-    transparent
-  );
-  transform: skewX(-22deg);
-  animation: logo-shimmer 4.5s ease-in-out infinite;
-  z-index: 3;
-  pointer-events: none;
-}
+/* Removed moving shimmer animation for a cleaner professional look */
 
 /* Stagger shimmer timing per card position */
-.clients-marquee-content > :nth-child(3n+2) .duo-logo-box::before { animation-delay: -1.5s; }
-.clients-marquee-content > :nth-child(3n+3) .duo-logo-box::before { animation-delay: -3.0s; }
+
 
 .duo-card:hover .duo-logo-box {
   border-color: var(--client-border-color, #3b82f6);
@@ -1089,12 +1071,53 @@ details[open] .pro-faq-plus {
   position: relative;
   z-index: 4;
   transition: transform 0.4s ease, filter 0.4s ease;
-  animation: logo-bounce-anim 7s ease-in-out infinite;
+  /* Removed bounce animation for professionalism */
 }
+
+.glitch {
+  /* Subtle pulse with slight scale for a premium feel */
+  animation: subtle-pulse 4s ease-in-out infinite;
+}
+
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.92; transform: scale(1.02); }
+}
+
+.logo-ring-wrapper .particle-burst::before {
+  animation: particle-fade 1.5s infinite;
+}
+
+/* Particle burst effect for client logos */
+.particle-burst {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.particle-burst::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--client-glow-color, rgba(59,130,246,0.5));
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: particle-fade 2s infinite ease-in-out;
+}
+@keyframes particle-fade {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+}
+
 
 .duo-card:hover .duo-logo-img {
   transform: scale(1.12) rotate(-3deg);
-  filter: drop-shadow(0 6px 14px var(--client-glow-color, rgba(59,130,246,0.5)));
+  filter: drop-shadow(0 6px 14px var(--client-border-color, #3b82f6));
   animation-play-state: paused;
 }
 
@@ -1109,24 +1132,15 @@ details[open] .pro-faq-plus {
   padding: 6px 18px;
   border-radius: 50px;
   margin-bottom: 20px;
-  z-index: 2;
-  position: relative;
-  background: linear-gradient(
-    90deg,
-    var(--client-bg-color,     rgba(59,130,246,0.12)),
-    var(--client-border-color, rgba(59,130,246,0.38)),
-    var(--client-bg-color,     rgba(59,130,246,0.12))
-  );
-  background-size: 300% 100%;
+  background: var(--client-bg-color, rgba(59,130,246,0.08));
   color: var(--client-text-color, #3b82f6);
-  border: 1px solid var(--client-border-color, rgba(59,130,246,0.3));
-  animation: tag-shimmer 3.5s ease-in-out infinite;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--client-border-color, rgba(59,130,246,0.2));
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .duo-card:hover .duo-tag {
-  transform: translateY(-3px) scale(1.06);
-  box-shadow: 0 5px 18px var(--client-glow-color, rgba(59,130,246,0.3));
+  transform: translateY(-3px) scale(1.03);
+  background: var(--client-bg-color, rgba(59,130,246,0.15));
 }
 
 /* ========================================== */
