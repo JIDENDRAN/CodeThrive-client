@@ -957,6 +957,88 @@ details[open] .pro-faq-plus {
 .marquee-card {
   width: 380px;
   flex-shrink: 0;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Bobbing/wave animation for marquee cards */
+.clients-marquee-content .marquee-card:nth-child(3n+1) {
+  animation: card-bob-1 6s ease-in-out infinite;
+}
+.clients-marquee-content .marquee-card:nth-child(3n+2) {
+  animation: card-bob-2 5s ease-in-out infinite;
+}
+.clients-marquee-content .marquee-card:nth-child(3n+3) {
+  animation: card-bob-3 7s ease-in-out infinite;
+}
+
+@keyframes card-bob-1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes card-bob-2 {
+  0%, 100% { transform: translateY(-6px); }
+  50% { transform: translateY(6px); }
+}
+
+@keyframes card-bob-3 {
+  0%, 100% { transform: translateY(4px); }
+  50% { transform: translateY(-8px); }
+}
+
+.marquee-card:hover {
+  animation-play-state: paused !important;
+  transform: translateY(-20px) scale(1.06) !important;
+  box-shadow: 0 25px 60px var(--client-glow-color, rgba(0,0,0,0.12)) !important;
+  border-color: var(--client-border-color, #3b82f6) !important;
+}
+
+/* Shiny reflection swept animation for logo box */
+.duo-logo-box {
+  overflow: hidden;
+  position: relative;
+}
+
+.duo-logo-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: 0.75s;
+}
+
+.duo-card:hover .duo-logo-box::after {
+  left: 150%;
+  transition: 0.75s ease;
+}
+
+.duo-logo-img {
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.5s ease;
+}
+
+.duo-card:hover .duo-logo-img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 8px 16px var(--client-glow-color));
+}
+
+/* Pulse tag animation on hover */
+.duo-card:hover .duo-tag {
+  animation: pulse-tag 1.5s infinite;
+}
+
+@keyframes pulse-tag {
+  0% { box-shadow: 0 0 0 0 var(--client-glow-color); }
+  70% { box-shadow: 0 0 0 8px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
 }
 
 @keyframes marquee-scroll {
@@ -973,10 +1055,39 @@ details[open] .pro-faq-plus {
   .marquee-card {
     width: 300px;
   }
+  
+  .clients-marquee-content .marquee-card:nth-child(3n+1) {
+    animation: card-bob-mobile-1 6s ease-in-out infinite;
+  }
+  .clients-marquee-content .marquee-card:nth-child(3n+2) {
+    animation: card-bob-mobile-2 5s ease-in-out infinite;
+  }
+  .clients-marquee-content .marquee-card:nth-child(3n+3) {
+    animation: card-bob-mobile-3 7s ease-in-out infinite;
+  }
+  
+  @keyframes card-bob-mobile-1 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes card-bob-mobile-2 {
+    0%, 100% { transform: translateY(-3px); }
+    50% { transform: translateY(3px); }
+  }
+  @keyframes card-bob-mobile-3 {
+    0%, 100% { transform: translateY(2px); }
+    50% { transform: translateY(-4px); }
+  }
+
+  .marquee-card:hover {
+    transform: translateY(-10px) scale(1.04) !important;
+  }
+
   .clients-marquee-content {
     gap: 20px;
     animation: marquee-scroll-mobile 20s linear infinite;
   }
+  
   @keyframes marquee-scroll-mobile {
     0% {
       transform: translateX(0);
