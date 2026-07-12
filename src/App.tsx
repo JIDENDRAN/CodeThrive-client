@@ -9,6 +9,7 @@ const Industries = lazy(() => import("./pages/Industries"));
 const Projects = lazy(() => import("./pages/Projects"));
 const Insights = lazy(() => import("./pages/Insights"));
 const Contact = lazy(() => import("./pages/Contact"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 
 const BillingDemo = lazy(() => import("./pages/demo/BillingDemo"));
 const CollegeERPDemo = lazy(() => import("./pages/demo/CollegeERPDemo"));
@@ -166,6 +167,7 @@ const App: React.FC = () => {
             <Route path="/projects" element={<Projects />} />
             <Route path="/insights" element={<Insights />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
             {/* Demo Page Routes */}
             <Route path="/demo/billing" element={<BillingDemo />} />
