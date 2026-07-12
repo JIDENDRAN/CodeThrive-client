@@ -64,6 +64,9 @@ const Footer: React.FC = () => {
             <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
               <Link to="/contact" className="footer-link">Contact</Link>
             </motion.div>
+            <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
+              <Link to="/privacy-policy" className="footer-link">Privacy Policy</Link>
+            </motion.div>
           </div>
 
           {/* Right: Contact Info */}
