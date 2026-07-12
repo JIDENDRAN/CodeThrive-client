@@ -64,9 +64,6 @@ const Footer: React.FC = () => {
             <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
               <Link to="/contact" className="footer-link">Contact</Link>
             </motion.div>
-            <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-              <Link to="/privacy-policy" className="footer-link">Privacy Policy</Link>
-            </motion.div>
           </div>
 
           {/* Right: Contact Info */}
@@ -148,6 +145,9 @@ const Footer: React.FC = () => {
           <p className="footer-copyright">
             © {currentYear} <span className="footer-copyright-highlight">CodeThrive Infotech</span>. All rights reserved.
           </p>
+          <div className="footer-bottom-links">
+            <Link to="/privacy-policy" className="footer-policy-link">Privacy Policy</Link>
+          </div>
           <p className="footer-motto">
             Progress. Cultivate. Innovate.
           </p>

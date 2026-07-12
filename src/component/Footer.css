@@ -243,6 +243,22 @@
   font-weight: 700;
 }
 
+.footer-bottom-links {
+  margin: 5px 0;
+}
+
+.footer-policy-link {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.footer-policy-link:hover {
+  color: #5ec4e8;
+}
+
 .footer-motto {
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.6);
