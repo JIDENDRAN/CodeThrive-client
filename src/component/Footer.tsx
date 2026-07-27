@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
             <h3 className="footer-contact-title">Get In Touch</h3>
             <div className="footer-contact-item">
               <span className="footer-contact-icon">📧</span>
-              <span>codethriveinfotech@gmail.com</span>
+              <span><a href="mailto:info@codethriveinfotech.in" style={{ color: 'inherit', textDecoration: 'none' }}>info@codethriveinfotech.in</a></span>
             </div>
             <div className="footer-contact-item">
               <span className="footer-contact-icon">📞</span>

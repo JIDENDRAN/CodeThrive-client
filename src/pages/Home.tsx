@@ -24,40 +24,39 @@ import "./HomeProTablet.css";
 import "./HomeProMobile.css";
 import SamyukthaLogo from "../assets/samyuktha_logo.jpg";
 import MaduraiBestToursLogo from "../assets/madurai_best_tours_logo.jpeg";
+import TherapyUniverseLogo from "../assets/therapy_universe_logo.png";
+import AmfStudioLogo from "../assets/amf_studio_logo.png";
 
 const clients = [
-  {
-    name: "Madurai Tour Taxi",
-    logo: "https://maduraitourtaxi.com/logo.png",
-    url: "#",
-    glow: "rgba(234, 179, 8, 0.35)",
-    border: "#eab308",
-    text: "#ca8a04",
-    bg: "rgba(234, 179, 8, 0.1)",
-    tag: "Cab Service",
-    icon: "🚕"
-  },
   {
     name: "Samyuktha Tours & Travels",
     logo: SamyukthaLogo,
     url: "#",
-    glow: "rgba(56, 189, 248, 0.35)",
-    border: "#38bdf8",
-    text: "#0284c7",
-    bg: "rgba(56, 189, 248, 0.1)",
-    tag: "Tours & Travels",
-    icon: "🗺️"
+    description: "End-to-end digital travel booking, itinerary planning, and customer reservation platform."
+  },
+  {
+    name: "Madurai Tour Taxi",
+    logo: "https://maduraitourtaxi.com/logo.png",
+    url: "#",
+    description: "Scalable fleet management and automated real-time taxi booking infrastructure."
   },
   {
     name: "Madurai Best Tours & Travels",
     logo: MaduraiBestToursLogo,
     url: "#",
-    glow: "rgba(234, 88, 12, 0.35)",
-    border: "#ea580c",
-    text: "#c2410c",
-    bg: "rgba(234, 88, 12, 0.1)",
-    tag: "Tours & Travels",
-    icon: "🚐"
+    description: "Seamless tourism experience platforms with integrated booking & payment gateways."
+  },
+  {
+    name: "The Therapy Universe",
+    logo: TherapyUniverseLogo,
+    url: "#",
+    description: "Modern healthcare management systems and patient appointment scheduling software."
+  },
+  {
+    name: "AMF Studio",
+    logo: AmfStudioLogo,
+    url: "#",
+    description: "Enterprise video production and high-end digital media services agency."
   }
 ];
 
@@ -65,6 +64,13 @@ const Home: React.FC = () => {
   // Component States
   const [testimonyIndex, setTestimonyIndex] = useState(0);
   const [marqueePaused, setMarqueePaused] = useState(false);
+  const [clientSpotlight, setClientSpotlight] = useState({ x: 50, y: 50 });
+  const handleClientMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setClientSpotlight({ x, y });
+  };
   const pauseMarquee = () => {
     setMarqueePaused(true);
     setTimeout(() => setMarqueePaused(false), 2000);
@@ -683,72 +689,165 @@ const Home: React.FC = () => {
         </section>
 
         {/* OUR CLIENTS SECTION */}
-        <section className="pro-section bg-light relative overflow-hidden" id="our-clients">
-          <div className="pro-container">
-            <motion.div 
-              variants={animateUp} 
-              initial="hidden" 
-              whileInView="visible" 
-              viewport={{ once: true, margin: "-100px" }} 
-              className="pro-center-header"
-            >
-              <span className="pro-label gradient-bg">Our Clients</span>
-              <h2 className="pro-heading gradient-animated">Trusted By Leading Brands</h2>
-              <p className="pro-desc">We build long-term relationships with businesses to drive digital transformation and growth.</p>
-            </motion.div>
+        <section 
+          className="enterprise-clients-section" 
+          id="our-clients"
+          onMouseMove={handleClientMouseMove}
+          style={{
+            background: `radial-gradient(600px circle at ${clientSpotlight.x}% ${clientSpotlight.y}%, rgba(14, 165, 233, 0.08), transparent 80%), #F8FAFC`
+          }}
+        >
+          {/* Subtle Ambient Light Glow */}
+          <motion.div
+            className="enterprise-ambient-glow"
+            animate={{
+              x: ['-10%', '10%', '-10%'],
+              y: ['-5%', '5%', '-5%'],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
 
-            <div className="clients-marquee-container">
-              <div className="clients-marquee-content" style={{ animationPlayState: marqueePaused ? 'paused' : 'running' }}>
-                {[...clients, ...clients, ...clients].map((client, i) => (
-                  <motion.div
-                    key={i}
-                    className="duo-card marquee-card"
-                    style={{
-                      '--client-glow-color': client.glow,
-                      '--client-border-color': client.border,
-                      '--client-text-color': client.text,
-                      '--client-bg-color': client.bg,
-                      animationDelay: `${-(i % 3) * 1.67}s`
-                    } as React.CSSProperties}
-                    whileHover={{ rotateY: 10, rotateX: 5, scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                    onClick={() => {
-                      pauseMarquee();
-                      if (client.url && client.url !== "#") {
-                        window.open(client.url, "_blank");
-                      }
-                    }}
-                  >
-                    <div className="duo-card-glow" />
-                    <div className="logo-ring-wrapper"
-  style={{
-    '--client-glow-color': client.glow,
-    '--client-border-color': client.border,
-  } as React.CSSProperties}>
-  <div className="particle-burst" />
-  <div className="duo-logo-box">
-                        {client.logo ? (
-                          <img 
-                            src={client.logo} 
-                            alt={client.name} 
-                                                        className="duo-logo-img glitch"
-                            style={{ animationDelay: `${-(i % 3) * 2}s` }}
-                            onError={(e) => {
-                              e.currentTarget.style.display = 'none';
-                              const fallback = e.currentTarget.parentElement?.querySelector('.client-fallback-avatar') as HTMLElement;
-                              if (fallback) fallback.style.display = 'block';
-                            }}
-                          />
-                        ) : null}
-                        <span className="client-fallback-avatar" style={{ display: client.logo ? 'none' : 'block', fontSize: '2.5rem' }}>
-                          {client.icon}
-                        </span>
-                      </div>
+          {/* Tiny Moving Particles (5% Opacity) */}
+          <div className="enterprise-particles-container">
+            {[...Array(5)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="enterprise-particle"
+                animate={{
+                  x: [0, (i % 2 === 0 ? 35 : -35), 0],
+                  y: [0, (i % 2 === 0 ? -25 : 25), 0],
+                }}
+                transition={{
+                  duration: 16 + i * 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                style={{
+                  top: `${18 + i * 16}%`,
+                  left: `${12 + i * 18}%`,
+                  width: `${6 + i * 3}px`,
+                  height: `${6 + i * 3}px`,
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="enterprise-clients-container">
+            {/* SECTION HEADER */}
+            <div className="enterprise-clients-header">
+              <motion.span 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="enterprise-clients-tag"
+              >
+                OUR CLIENTS
+              </motion.span>
+              
+              <motion.h2 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="enterprise-clients-title"
+              >
+                Our Clients
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="enterprise-clients-subtitle"
+              >
+                Trusted by organizations across multiple industries.
+              </motion.p>
+            </div>
+
+            {/* CLIENT CARDS GRID */}
+            <div className="enterprise-clients-grid">
+              {clients.map((client, index) => (
+                <motion.div
+                  key={index}
+                  className="enterprise-client-card"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    duration: 0.7, 
+                    delay: index * 0.08, 
+                    ease: [0.16, 1, 0.3, 1] 
+                  }}
+                  onClick={() => {
+                    if (client.url && client.url !== "#") {
+                      window.open(client.url, "_blank");
+                    }
+                  }}
+                >
+                  <div className="enterprise-card-logo-box">
+                    <motion.div
+                      animate={{ y: [-3, 3, -3] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      className="enterprise-logo-wrapper"
+                    >
+                      {client.logo ? (
+                        <img 
+                          src={client.logo} 
+                          alt={client.name} 
+                          className="enterprise-client-logo"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            const fallback = e.currentTarget.parentElement?.querySelector('.enterprise-fallback-name') as HTMLElement;
+                            if (fallback) fallback.style.display = 'block';
+                          }}
+                        />
+                      ) : null}
+                      <span className="enterprise-fallback-name" style={{ display: client.logo ? 'none' : 'block' }}>
+                        {client.name}
+                      </span>
+                    </motion.div>
+                  </div>
+
+                  <h3 className="enterprise-client-name">{client.name}</h3>
+                  <p className="enterprise-client-desc">{client.description}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* BOTTOM TRUST BAR */}
+            <div className="enterprise-trust-bar">
+              <p className="enterprise-trust-label">
+                Building long-term partnerships with businesses.
+              </p>
+              
+              <div className="enterprise-marquee-strip">
+                <div className="enterprise-marquee-track">
+                  {[...clients, ...clients, ...clients, ...clients].map((c, idx) => (
+                    <div key={idx} className="enterprise-marquee-item">
+                      {c.logo ? (
+                        <img 
+                          src={c.logo} 
+                          alt={c.name} 
+                          className="enterprise-marquee-logo" 
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            const textFallback = e.currentTarget.parentElement?.querySelector('.enterprise-marquee-text') as HTMLElement;
+                            if (textFallback) textFallback.style.display = 'inline-block';
+                          }}
+                        />
+                      ) : null}
+                      <span className="enterprise-marquee-text" style={{ display: c.logo ? 'none' : 'inline-block' }}>
+                        {c.name}
+                      </span>
                     </div>
-                    <span className="duo-tag">{client.tag}</span>
-                    <h3 className="duo-name">{client.name}</h3>
-                  </motion.div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>

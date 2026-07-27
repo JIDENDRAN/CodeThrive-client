@@ -84,7 +84,7 @@ Sent from CodeThrive Contact Form
     window.open(whatsappUrl, '_blank');
 
     // 4. SEND TO EMAIL (Opens email client with pre-filled email)
-    const mailtoLink = `mailto:codethriveinfotech@gmail.com?subject=${encodeURIComponent('Contact Form: ' + formData.subject)}&body=${encodeURIComponent(emailBody)}`;
+    const mailtoLink = `mailto:info@codethriveinfotech.in?subject=${encodeURIComponent('Contact Form: ' + formData.subject)}&body=${encodeURIComponent(emailBody)}`;
     window.open(mailtoLink, '_blank');
 
     // 5. SHOW SUCCESS MESSAGE
@@ -216,7 +216,7 @@ Sent from CodeThrive Contact Form
                   <Mail size={32} />
                 </motion.div>
                 <h3>Email</h3>
-                <a href="mailto:codethriveinfotech@gmail.com">codethriveinfotech@gmail.com</a>
+                <a href="mailto:info@codethriveinfotech.in">info@codethriveinfotech.in</a>
               </motion.div>
 
               {/* Phone Card */}

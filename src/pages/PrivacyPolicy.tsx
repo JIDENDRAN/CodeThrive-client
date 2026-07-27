@@ -122,7 +122,7 @@ const PrivacyPolicy: React.FC = () => {
             <p>
               If you have any questions about this privacy policy or our privacy practices, please contact us at:
               <br />
-              <strong>Email:</strong> support@codethrive.com
+              <strong>Email:</strong> <a href="mailto:info@codethriveinfotech.in" style={{ color: '#3b82f6', textDecoration: 'none' }}>info@codethriveinfotech.in</a>
             </p>
           </section>
         </div>
