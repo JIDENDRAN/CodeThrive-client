@@ -256,8 +256,8 @@ Sent from CodeThrive Contact Form
                   <MapPin size={32} />
                 </motion.div>
                 <h3>Location</h3>
-                <p>15/5 , 1 st Floor , Saravana Complex ,Opp to K-Mart</p>
-                <p>Papampattipirivu, Trichy road , Coimbatore - 641103</p>
+                <p>No : 1, Srihari Nivas, Indira Nagar</p>
+                <p>Sungam, Coimbatore, Tamil Nadu - 641045</p>
               </motion.div>
 
               {/* Direction Card */}
@@ -278,10 +278,10 @@ Sent from CodeThrive Contact Form
                 </motion.div>
                 <h3>Directions</h3>
                 <p style={{ fontSize: '0.9rem', marginBottom: '10px' }}>
-                  CodeThrive Infotech | IT Services and Support
+                  CodeThrive Infotech | Website, Mobile App Builder & Business Support
                 </p>
                 <a 
-                  href="https://www.google.com/maps/dir/?api=1&destination=CodeThrive%20Infotech%20%7C%20IT%20Services%20%26%20Project%20Training%2C%201st%20floor%2C%20Sarvana%20Complex%2C%20Pampattipirivu%2C%20Barathipuram%2C%20Coimbatore%2C%20Tamil%20Nadu%20641402" 
+                  href="https://www.google.com/maps/dir/?api=1&destination=CodeThrive%20Infotech%20%7C%20Website%20Development%2C%20Mobile%20App%20Builder%20%26%20Business%20Support%2C%20No%20%3A%201%2C%20Srihari%20Nivas%2C%20Indira%20Nagar%2C%20Sungam%2C%20Coimbatore%2C%20Tamil%20Nadu%20641045" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   style={{ color: '#8b5cf6', fontWeight: 'bold' }}
