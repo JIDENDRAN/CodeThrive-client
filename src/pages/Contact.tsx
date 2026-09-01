@@ -256,8 +256,17 @@ Sent from CodeThrive Contact Form
                   <MapPin size={32} />
                 </motion.div>
                 <h3>Location</h3>
-                <p>No : 1, Srihari Nivas, Indira Nagar</p>
-                <p>Sungam, Coimbatore, Tamil Nadu - 641045</p>
+                <p>
+                  <a 
+                    href="https://maps.app.goo.gl/AgyaE6mujDEaVjZr8?g_st=aw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: 'inherit', textDecoration: 'none' }}
+                  >
+                    No 1 ,Srihari Nivas , Indira Nagar <br />
+                    Sugam , Coimbatore - 641045
+                  </a>
+                </p>
               </motion.div>
 
               {/* Direction Card */}
@@ -281,7 +290,7 @@ Sent from CodeThrive Contact Form
                   CodeThrive Infotech | Website, Mobile App Builder & Business Support
                 </p>
                 <a 
-                  href="https://www.google.com/maps/dir/?api=1&destination=CodeThrive%20Infotech%20%7C%20Website%20Development%2C%20Mobile%20App%20Builder%20%26%20Business%20Support%2C%20No%20%3A%201%2C%20Srihari%20Nivas%2C%20Indira%20Nagar%2C%20Sungam%2C%20Coimbatore%2C%20Tamil%20Nadu%20641045" 
+                  href="https://maps.app.goo.gl/AgyaE6mujDEaVjZr8?g_st=aw" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   style={{ color: '#8b5cf6', fontWeight: 'bold' }}

@@ -77,9 +77,19 @@ const Footer: React.FC = () => {
               <span className="footer-contact-icon">📞</span>
               <span>+91 9150781685</span>
             </div>
-            <div className="footer-contact-item">
-              <span className="footer-contact-icon">📍</span>
-              <span>Coimbatore, Tamil Nadu, India</span>
+            <div className="footer-contact-item" style={{ alignItems: 'flex-start' }}>
+              <span className="footer-contact-icon" style={{ marginTop: '5px' }}>📍</span>
+              <span>
+                <a 
+                  href="https://maps.app.goo.gl/AgyaE6mujDEaVjZr8?g_st=aw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                >
+                  No 1, Srihari Nivas, Indira Nagar,<br />
+                  Sugam, Coimbatore - 641045
+                </a>
+              </span>
             </div>
 
             {/* Social Media Links */}
