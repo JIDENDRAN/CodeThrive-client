@@ -386,6 +386,227 @@ export const INDUSTRIES = [
 
 export const PROJECTS = [
   {
+    id: 'feinheit-boutique',
+    title: 'The Feinheit Boutique Shop',
+    client: 'The Feinheit Boutique',
+    category: 'Enterprise',
+    industry: 'RETAIL',
+    badge: 'WEB',
+    description: 'Luxury fashion boutique web store featuring designer collections, instant WhatsApp orders, catalog filters, and responsive layout.',
+    metrics: [
+      { label: 'Online Orders', value: '+120%' },
+      { label: 'Catalog Speed', value: '0.3s' }
+    ],
+    technologies: ['React', 'Tailwind CSS', 'Vercel', 'WhatsApp API'],
+    imageUrl: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=900&q=80'
+    ],
+    demoUrl: 'https://the-fein-heit-boutique-3wrs.vercel.app/',
+    liveUrl: 'https://the-fein-heit-boutique-3wrs.vercel.app/'
+  },
+  {
+    id: 'cti-portfolio',
+    title: 'CodeThrive Infotech Portfolio',
+    client: 'CodeThrive Infotech',
+    category: 'Enterprise',
+    industry: 'ENGINEERING',
+    badge: 'WEB',
+    description: 'Comprehensive software agency portfolio showcasing full-stack projects, tech stacks, client reviews, and direct service enquiry.',
+    metrics: [
+      { label: 'Client Inquiries', value: '+150%' },
+      { label: 'Lighthouse Score', value: '100%' }
+    ],
+    technologies: ['React', 'Tailwind CSS', 'Vite', 'Node.js'],
+    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80'
+    ],
+    demoUrl: 'https://ctiportfolio.vercel.app/',
+    liveUrl: 'https://ctiportfolio.vercel.app/'
+  },
+  {
+    id: 'tvk-it-wing',
+    title: 'TVK IT Wing Portal',
+    client: 'TVK IT Wing',
+    category: 'Cloud & SaaS',
+    industry: 'ENTERPRISE',
+    badge: 'WEB',
+    description: 'Official organization IT wing portal with event updates, news feed, member registration, and community outreach features.',
+    metrics: [
+      { label: 'Member Registrations', value: '10,000+' },
+      { label: 'Portal Uptime', value: '99.9%' }
+    ],
+    technologies: ['React', 'Next.js', 'Tailwind CSS', 'PostgreSQL'],
+    imageUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80'
+    ],
+    demoUrl: 'https://tvk-nirmal.vercel.app/',
+    liveUrl: 'https://tvk-nirmal.vercel.app/'
+  },
+  {
+    id: 'success-aqua',
+    title: 'Success Aqua Green Water Can',
+    client: 'Success Aqua Enterprises',
+    category: 'Cloud & SaaS',
+    industry: 'SERVICES',
+    badge: 'WEB',
+    description: 'Purified water can delivery website with online order bookings, subscription plans, rate charts, and delivery area tracking.',
+    metrics: [
+      { label: 'Daily Delivery Orders', value: '800+' },
+      { label: 'Response Time', value: '< 2 mins' }
+    ],
+    technologies: ['React', 'Node.js', 'Render', 'Tailwind CSS'],
+    imageUrl: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4e?auto=format&fit=crop&w=900&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1548839140-29a749e1cf4e?auto=format&fit=crop&w=900&q=80'
+    ],
+    demoUrl: 'https://success-aqua-website.onrender.com/',
+    liveUrl: 'https://success-aqua-website.onrender.com/'
+  },
+  {
+    id: 'aramn-physiotherapy',
+    title: 'Aramn Physiotherapy Clinic',
+    client: 'Aramn Therapy Center',
+    category: 'Healthcare',
+    industry: 'HEALTHCARE',
+    badge: 'WEB',
+    description: 'Physiotherapy & rehabilitation clinic website with online appointment booking, doctor profiles, treatments list, and patient reviews.',
+    metrics: [
+      { label: 'Patient Bookings', value: '+95%' },
+      { label: 'Satisfaction Rating', value: '4.9/5' }
+    ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS'],
+    imageUrl: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80'
+    ],
+    demoUrl: 'https://aramn-therapy.vercel.app/',
+    liveUrl: 'https://aramn-therapy.vercel.app/'
+  },
+  {
+    id: 'cloud-kitchen-foods',
+    title: 'Cloud Kitchen Homemade Foods',
+    client: 'Homestyle Culinary Kitchen',
+    category: 'Cloud & SaaS',
+    industry: 'HOTELS',
+    badge: 'WEB',
+    description: 'Online food ordering portal for homemade meals, daily tiffin subscriptions, catering menus, and instant WhatsApp food orders.',
+    metrics: [
+      { label: 'Tiffin Subscriptions', value: '350+' },
+      { label: 'Order Growth', value: '+140%' }
+    ],
+    technologies: ['React', 'Tailwind CSS', 'WhatsApp API'],
+    imageUrl: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80'
+    ],
+    demoUrl: 'http://cloud-kitchen-chi-six.vercel.app/',
+    liveUrl: 'http://cloud-kitchen-chi-six.vercel.app/'
+  },
+  {
+    id: 'sure-wellness-gym',
+    title: 'Sure Wellness Gym & Fitness',
+    client: 'Sure Wellness Center',
+    category: 'Enterprise',
+    industry: 'FITNESS',
+    badge: 'WEB',
+    description: 'Modern fitness center website featuring membership plans, personal trainer profiles, workout schedules, and gym gallery.',
+    metrics: [
+      { label: 'Member Retention', value: '92%' },
+      { label: 'Trial Enquiries', value: '+88%' }
+    ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS'],
+    imageUrl: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80'
+    ],
+    demoUrl: 'https://sure-wellness.vercel.app/',
+    liveUrl: 'https://sure-wellness.vercel.app/'
+  },
+  {
+    id: 'shop-maker-erp',
+    title: 'Shop Maker ERP System',
+    client: 'ShopMaker Retail Solutions',
+    category: 'Enterprise',
+    industry: 'RETAIL',
+    badge: 'WEB',
+    description: 'Cloud ERP business management web software with inventory management, billing POS, GST invoices, and sales analytics.',
+    metrics: [
+      { label: 'Billing Speed', value: '3x Faster' },
+      { label: 'Inventory Accuracy', value: '99.9%' }
+    ],
+    technologies: ['React', 'Node.js', 'PostgreSQL'],
+    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'
+    ],
+    demoUrl: 'https://shopmaker-erp.vercel.app/',
+    liveUrl: 'https://shopmaker-erp.vercel.app/'
+  },
+  {
+    id: 'twinkle-town',
+    title: 'Twinkle Town Kids Hub',
+    client: 'Twinkle Town Academy',
+    category: 'Cloud & SaaS',
+    industry: 'EDUCATION',
+    badge: 'WEB',
+    description: 'Vibrant play school & kids activity hub website with class details, activity photo gallery, parent testimonials, and enquiry form.',
+    metrics: [
+      { label: 'Parent Admissions', value: '+75%' },
+      { label: 'Enquiry Rate', value: '84%' }
+    ],
+    technologies: ['React', 'Tailwind CSS', 'Framer Motion'],
+    imageUrl: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80'
+    ],
+    demoUrl: 'https://twinklez.vercel.app/',
+    liveUrl: 'https://twinklez.vercel.app/'
+  },
+  {
+    id: 'chillz-tour',
+    title: 'Chillz Tour & Travels',
+    client: 'Chillz Holiday Agency',
+    category: 'Cloud & SaaS',
+    industry: 'TRAVEL',
+    badge: 'WEB',
+    description: 'Complete travel package booking portal featuring holiday packages, itinerary details, destination photos, and tour enquiry forms.',
+    metrics: [
+      { label: 'Package Enquiries', value: '+130%' },
+      { label: 'Rating', value: '4.9/5' }
+    ],
+    technologies: ['React', 'Next.js', 'Tailwind CSS'],
+    imageUrl: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=900&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=900&q=80'
+    ],
+    demoUrl: 'https://chillz-tour.vercel.app/',
+    liveUrl: 'https://chillz-tour.vercel.app/'
+  },
+  {
+    id: 'stepup-dance-studio',
+    title: 'StepUp Dance Studio',
+    client: 'StepUp Dance Academy',
+    category: 'Enterprise',
+    industry: 'ARTS',
+    badge: 'WEB',
+    description: 'Professional dance academy website showcasing class schedules, choreography videos, dance style courses, and workshop registrations.',
+    metrics: [
+      { label: 'Student Enrollments', value: '+105%' },
+      { label: 'Video Showcase', value: '50K+ Views' }
+    ],
+    technologies: ['React', 'Tailwind CSS', 'Video API'],
+    imageUrl: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=900&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=900&q=80'
+    ],
+    demoUrl: 'http://stepup-dance.vercel.app/',
+    liveUrl: 'http://stepup-dance.vercel.app/'
+  },
+  {
     id: 'gym-website',
     title: 'Gym Website',
     client: 'Pulse Fitness Club',

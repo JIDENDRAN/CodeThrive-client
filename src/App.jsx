@@ -14,6 +14,7 @@ import { InsightsPage } from './components/insights/InsightsPage';
 import { ContactPage } from './components/contact/ContactPage';
 import { PrivacyPolicyPage } from './components/common/PrivacyPolicyPage';
 import { TermsOfServicePage } from './components/common/TermsOfServicePage';
+import { OfferRegistrationPage } from './components/offer/OfferRegistrationPage';
 import { ScheduleModal } from './components/contact/ScheduleModal';
 import { CookieConsent } from './components/common/CookieConsent';
 import { ThriveBot } from './components/common/ThriveBot';
@@ -79,6 +80,10 @@ export default function App() {
 
         {activeTab === 'terms' && (
           <TermsOfServicePage setActiveTab={setActiveTab} />
+        )}
+
+        {activeTab === 'offer' && (
+          <OfferRegistrationPage setActiveTab={setActiveTab} />
         )}
       </main>
 

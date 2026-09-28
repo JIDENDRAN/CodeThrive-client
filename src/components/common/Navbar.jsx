@@ -25,7 +25,8 @@ export const Navbar = ({ activeTab, setActiveTab }) => {
     { id: 'projects', label: 'Work' },
     { id: 'gallery', label: 'Gallery' },
     { id: 'insights', label: 'Insights' },
-    { id: 'contact', label: "Let's Talk" }
+    { id: 'contact', label: "Let's Talk" },
+    { id: 'offer', label: '🔥 ₹1K Offer' },
   ];
 
   const handleNavClick = (tab) => {

@@ -84,7 +84,8 @@ export const Footer = ({ setActiveTab }) => {
     { label: 'Work', tab: 'projects' },
     { label: 'Gallery', tab: 'gallery' },
     { label: 'Insights', tab: 'insights' },
-    { label: "Let's Talk", tab: 'contact' }
+    { label: "Let's Talk", tab: 'contact' },
+    { label: '🔥 ₹1K Offer', tab: 'offer' }
   ];
 
   const social = [
