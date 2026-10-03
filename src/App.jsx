@@ -20,10 +20,18 @@ import { CookieConsent } from './components/common/CookieConsent';
 import { ThriveBot } from './components/common/ThriveBot';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('home');
+  const [activeTab, setActiveTab] = useState(() => {
+    const hash = window.location.hash.replace('#', '');
+    return hash || 'home';
+  });
   const [isScheduleOpen, setIsScheduleOpen] = useState(false);
 
   useEffect(() => {
+    if (activeTab !== 'home') {
+      window.location.hash = activeTab;
+    } else {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeTab]);
 

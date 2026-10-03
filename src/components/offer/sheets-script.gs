@@ -87,11 +87,48 @@ function doPost(e) {
   }
 }
 
-// Handle CORS / Status check
+// Handle CORS / Get recent registrations
 function doGet(e) {
-  return ContentService
-    .createTextOutput(JSON.stringify({ status: 'ok', service: 'CodeThrive Registration API' }))
-    .setMimeType(ContentService.MimeType.JSON);
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = ss.getSheetByName(SHEET_NAME);
+    
+    if (!sheet) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ status: 'success', data: [] }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    const dataRange = sheet.getDataRange();
+    const values = dataRange.getValues();
+    
+    if (values.length <= 1) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ status: 'success', data: [] }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    // Skip header row
+    const rows = values.slice(1);
+    
+    // Format data for frontend (latest first)
+    const clients = rows.map((row, index) => ({
+      id: index.toString(),
+      name: row[5] || row[2] || 'Registered Business', // Business Name or Full Name
+      type: row[6] || 'Business',                      // Business Type
+      city: row[7] || 'India',                         // City
+      date: row[1] ? row[1].toString() : 'Recently'    // Submitted At
+    })).reverse().slice(0, 20); // Top 20 latest registrations
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: 'success', data: clients }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: 'error', message: err.message }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
 }
 
 // ============================================================

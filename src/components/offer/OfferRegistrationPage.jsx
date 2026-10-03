@@ -1,4 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
+import Tesseract from 'tesseract.js';
 import {
   User, Phone, Mail, Building2, MapPin, Globe, Upload,
   CheckCircle2, Star, Trophy, Zap, Shield,
@@ -12,7 +13,7 @@ import {
 const SHEETS_URL = import.meta.env.VITE_SHEETS_URL || '';
 
 // ─── UPI Details ──────────────────────────────────────────────────────────────
-const UPI_ID = '9150781685@ybl';
+const UPI_ID = '341783757801954@cnrb';
 const UPI_NAME = 'CodeThrive Infotech';
 
 // ─── Offer Tiers ─────────────────────────────────────────────────────────────
@@ -42,9 +43,107 @@ const OFFER_TIERS = [
     sub: 'Standard ₹15,000 package at ₹7,500',
     badge: '₹1,000 Fee Credited',
     borderColor: 'border-indigo-200',
-    tagBg: 'bg-indigo-600 text-white',
   },
 ];
+
+// ─── Live Registered Clients Modal ─────────────────────────────────────────────
+const RegisteredClientsModal = ({ onClose }) => {
+  const [clients, setClients] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState('');
+
+  React.useEffect(() => {
+    if (!SHEETS_URL) {
+      setError('Google Sheets URL not configured in environment variables.');
+      setLoading(false);
+      return;
+    }
+
+    fetch(SHEETS_URL)
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          setClients(data.data || []);
+        } else {
+          setError(data.message || 'Failed to fetch registrations from sheet.');
+        }
+      })
+      .catch(err => {
+        console.error('Failed to fetch from sheet:', err);
+        setError('Could not connect to Google Sheets server. CORS or Network error.');
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
+      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[80vh] animate-slide-in-up">
+        <div className="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
+              <Trophy size={20} className="text-emerald-600" />
+            </div>
+            <div>
+              <h3 className="font-extrabold text-slate-900 text-lg">Recently Registered Businesses</h3>
+              <p className="text-xs text-slate-500 font-medium">Join these businesses in claiming the offer!</p>
+            </div>
+          </div>
+          <button onClick={onClose} className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-200 rounded-full transition-colors">
+            <X size={20} />
+          </button>
+        </div>
+        <div className="p-6 overflow-y-auto bg-slate-50/50 flex-1">
+          <div className="space-y-3">
+            
+            {loading && (
+              <div className="flex flex-col items-center justify-center py-10 gap-3">
+                <div className="w-8 h-8 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
+                <p className="text-sm font-bold text-slate-500">Fetching live registrations...</p>
+              </div>
+            )}
+            
+            {!loading && error && (
+              <div className="flex flex-col items-center justify-center py-10 gap-2 text-center">
+                <p className="text-sm font-bold text-rose-500">{error}</p>
+                <p className="text-xs text-slate-500">Please make sure you have deployed the latest Google Apps Script code.</p>
+              </div>
+            )}
+
+            {!loading && !error && clients.length === 0 && (
+              <div className="flex flex-col items-center justify-center py-10 text-center">
+                <p className="text-sm font-bold text-slate-500">No registrations found yet. Be the first!</p>
+              </div>
+            )}
+
+            {!loading && !error && clients.map(client => (
+              <div key={client.id} className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between hover:border-indigo-300 transition-colors">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 font-black text-lg uppercase">
+                    {client.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-slate-800 text-sm">{client.name}</h4>
+                    <div className="flex items-center gap-2 mt-1 text-[11px] font-bold text-slate-500">
+                      <span className="flex items-center gap-1"><Building2 size={12}/> {client.type}</span>
+                      <span>•</span>
+                      <span className="flex items-center gap-1"><MapPin size={12}/> {client.city}</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-extrabold border border-emerald-200">
+                    <CheckCircle2 size={10} /> Registered
+                  </span>
+                  <p className="text-[10px] text-slate-400 mt-1.5 font-medium">{client.date}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 // ─── Input Field Component ───────────────────────────────────────────────────
 const Field = ({ icon: Icon, label, id, type = 'text', value, onChange, placeholder, required, options }) => (
@@ -243,6 +342,8 @@ export const OfferRegistrationPage = ({ setActiveTab }) => {
   const [submittedData, setSubmittedData] = useState(null);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isScanning, setIsScanning] = useState(false);
+  const [showClientsModal, setShowClientsModal] = useState(false);
 
   const set = key => val => setForm(f => ({ ...f, [key]: val }));
 
@@ -262,6 +363,33 @@ export const OfferRegistrationPage = ({ setActiveTab }) => {
     const reader = new FileReader();
     reader.onload = ev => setPaymentPreview(ev.target.result);
     reader.readAsDataURL(file);
+
+    // Auto-scan for Transaction ID using OCR
+    setIsScanning(true);
+    Tesseract.recognize(file, 'eng')
+      .then(({ data: { text } }) => {
+        console.log('[OCR] Scanned text:', text);
+        // Look for typical UPI 12-digit UTR numbers
+        const utrMatch = text.match(/\b\d{12}\b/);
+        // Also look for GPay style transaction IDs
+        const gpayMatch = text.match(/\b[A-Z0-9]{12,20}\b/i);
+        
+        let foundId = '';
+        if (utrMatch) {
+          foundId = utrMatch[0];
+        } else if (gpayMatch) {
+          // Exclude common false positives
+          const filtered = text.match(/\b[A-Z0-9]{12,20}\b/g) || [];
+          const candidate = filtered.find(t => !/^[A-Z]+$/.test(t) && /\d/.test(t) && /[A-Z]/i.test(t));
+          if (candidate) foundId = candidate;
+        }
+
+        if (foundId) {
+          setForm(f => ({ ...f, transactionId: foundId }));
+        }
+      })
+      .catch(err => console.error('[OCR] Error:', err))
+      .finally(() => setIsScanning(false));
   }, []);
 
   const handleDrop = e => {
@@ -479,6 +607,16 @@ export const OfferRegistrationPage = ({ setActiveTab }) => {
               </div>
             ))}
           </div>
+          
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => setShowClientsModal(true)}
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white hover:bg-slate-100 text-indigo-950 font-black text-sm transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:scale-95"
+            >
+              <User size={18} className="text-indigo-600" />
+              <span>View Recently Registered Businesses</span>
+            </button>
+          </div>
 
         </div>
       </section>
@@ -518,6 +656,19 @@ export const OfferRegistrationPage = ({ setActiveTab }) => {
                     <p className="text-[11px] font-extrabold uppercase tracking-wider text-amber-800">Registration Fee</p>
                     <p className="text-3xl font-black text-amber-950 my-0.5">₹1,000</p>
                     <p className="text-xs text-amber-800 font-semibold">✨ 100% Credited back in your final website package bill</p>
+                  </div>
+
+                  {/* QR Code Section */}
+                  <div className="flex flex-col items-center justify-center bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                    <p className="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-3 flex items-center gap-1.5">
+                      <QrCode size={16} />
+                      Scan to Pay
+                    </p>
+                    <div className="bg-white p-2 rounded-xl border border-slate-100 shadow-inner mb-3">
+                      {/* Image path points to the public folder */}
+                      <img src="/offer-qr.png" alt="Scan to Pay ₹1,000" className="w-48 h-48 object-contain rounded-lg" />
+                    </div>
+                    <p className="text-[11px] font-bold text-slate-500">BHIM UPI • Supported by all apps</p>
                   </div>
 
                   {/* UPI Details */}
@@ -704,8 +855,9 @@ export const OfferRegistrationPage = ({ setActiveTab }) => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <Field icon={CheckCircle2} label="Transaction ID / UTR" id="transactionId" value={form.transactionId} onChange={set('transactionId')} placeholder="e.g. T2409281234567" required />
-                        {errors.transactionId && <p className="text-xs font-bold text-rose-600 mt-1">⚠ {errors.transactionId}</p>}
+                        <Field icon={CheckCircle2} label="Transaction ID / UTR" id="transactionId" value={form.transactionId} onChange={set('transactionId')} placeholder={isScanning ? "Scanning image for ID..." : "e.g. T2409281234567"} required />
+                        {isScanning && <p className="text-xs font-bold text-indigo-600 mt-1 flex items-center gap-1.5"><span className="animate-spin w-3 h-3 border-2 border-indigo-600 border-t-transparent rounded-full"></span> Auto-scanning screenshot...</p>}
+                        {errors.transactionId && !isScanning && <p className="text-xs font-bold text-rose-600 mt-1">⚠ {errors.transactionId}</p>}
                       </div>
                       <Field icon={Phone} label="UPI App Used" id="upiId" type="select" value={form.upiId} onChange={set('upiId')}
                         options={['Google Pay', 'PhonePe', 'Paytm', 'Amazon Pay', 'BHIM UPI', 'Bank App', 'Other UPI']} />
@@ -827,6 +979,7 @@ export const OfferRegistrationPage = ({ setActiveTab }) => {
         </div>
       </footer>
 
+      {showClientsModal && <RegisteredClientsModal onClose={() => setShowClientsModal(false)} />}
     </div>
   );
 };
