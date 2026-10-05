@@ -640,8 +640,8 @@ export const OfferRegistrationPage = ({ setActiveTab }) => {
                       1
                     </div>
                     <div>
-                      <h2 className="font-extrabold text-sm sm:text-base">Step 1: Scan & Pay Fee</h2>
-                      <p className="text-[11px] text-slate-400">Google Pay, PhonePe, Paytm or UPI</p>
+                      <h2 className="font-extrabold text-sm sm:text-base text-white">Step 1: Scan & Pay Fee</h2>
+                      <p className="text-[11px] text-slate-300">Google Pay, PhonePe, Paytm or UPI</p>
                     </div>
                   </div>
                   <span className="px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-extrabold border border-amber-400/30">
@@ -770,8 +770,8 @@ export const OfferRegistrationPage = ({ setActiveTab }) => {
                       2
                     </div>
                     <div>
-                      <h2 className="font-extrabold text-base sm:text-lg">Step 2: Fill Registration Details</h2>
-                      <p className="text-xs text-slate-400">Enter your business info and upload payment screenshot</p>
+                      <h2 className="font-extrabold text-base sm:text-lg text-white">Step 2: Fill Registration Details</h2>
+                      <p className="text-xs text-slate-300">Enter your business info and upload payment screenshot</p>
                     </div>
                   </div>
                   <span className="px-3.5 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-extrabold border border-indigo-400/30">
